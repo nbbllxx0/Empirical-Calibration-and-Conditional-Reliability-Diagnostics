@@ -1,0 +1,18 @@
+experiment_name: phme_10b_tabular_load_speed
+seed: 7
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: random_forest
+  backend: numpy
+  n_estimators: 100
+uncertainty:
+  enabled: true
+  alpha: 0.1

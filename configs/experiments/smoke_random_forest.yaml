@@ -1,0 +1,26 @@
+experiment_name: smoke_random_forest
+seed: 7
+data:
+  processed_dir: data/processed/synthetic_tiny
+run:
+  runs_dir: runs
+split:
+  strategy: by_bearing_random
+  val_fraction: 0.25
+  test_fraction: 0.25
+model:
+  type: random_forest
+  n_estimators: 40
+  min_samples_leaf: 1
+uncertainty:
+  alpha: 0.1
+eval_subsets:
+  - name: partial_20
+    max_life_fraction: 0.2
+  - name: partial_40
+    max_life_fraction: 0.4
+stress_tests:
+  - name: feature_noise_10
+    feature_noise_std: 0.1
+  - name: missing_features_20
+    missing_feature_fraction: 0.2

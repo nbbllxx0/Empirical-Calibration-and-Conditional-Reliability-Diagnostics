@@ -1,0 +1,29 @@
+experiment_name: phme_10b_diag_no_raw
+seed: 21
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: digital_twin
+  hidden: 96
+  ensemble_size: 3
+input_ablation:
+  zero_raw_signal: true
+training:
+  epochs: 120
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 18
+  physics_weight: 0.0
+  context_dropout: 0.5
+  cuda: true
+uncertainty:
+  enabled: true
+  alpha: 0.1

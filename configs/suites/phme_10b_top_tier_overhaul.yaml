@@ -1,0 +1,22 @@
+name: phme_10b_top_tier_overhaul
+experiments:
+  - name: phme_10b_latent_load_speed
+    config: configs/experiments/phme_10b_latent_load_speed.yaml
+  - name: phme_10b_fused_direct_load_speed
+    config: configs/experiments/phme_10b_fused_direct_load_speed.yaml
+  - name: phme_10b_tcn_load_speed
+    config: configs/experiments/phme_10b_tcn_load_speed.yaml
+  - name: phme_10b_lstm_load_speed
+    config: configs/experiments/phme_10b_lstm_load_speed.yaml
+  - name: phme_10b_transformer_load_speed
+    config: configs/experiments/phme_10b_transformer_load_speed.yaml
+  - name: phme_10b_attention_physics_load_speed
+    config: configs/experiments/phme_10b_attention_physics_load_speed.yaml
+  - name: phme_10b_sklearn_rf_load_speed
+    config: configs/experiments/phme_10b_sklearn_rf_load_speed.yaml
+  - name: phme_10b_sklearn_gb_load_speed
+    config: configs/experiments/phme_10b_sklearn_gb_load_speed.yaml
+  - name: phme_10b_gb_load_speed
+    config: configs/experiments/phme_10b_gb_load_speed.yaml
+  - name: phme_10b_tabular_load_speed
+    config: configs/experiments/phme_10b_tabular_load_speed.yaml

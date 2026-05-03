@@ -1,0 +1,39 @@
+experiment_name: smoke_digital_twin
+seed: 11
+data:
+  processed_dir: data/processed/synthetic_tiny
+run:
+  runs_dir: runs
+split:
+  strategy: by_bearing_random
+  val_fraction: 0.25
+  test_fraction: 0.25
+model:
+  type: digital_twin
+  hidden: 48
+  ensemble_size: 2
+training:
+  epochs: 6
+  batch_size: 24
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 4
+  physics_weight: 0.1
+  cuda: true
+uncertainty:
+  alpha: 0.1
+eval_subsets:
+  - name: partial_20
+    max_life_fraction: 0.2
+  - name: partial_40
+    max_life_fraction: 0.4
+  - name: late_80
+    min_life_fraction: 0.8
+stress_tests:
+  - name: noise_10
+    signal_noise_std: 0.1
+  - name: missing_channel_0
+    zero_channel: 0
+condition_response_tests:
+  - name: high_load_speed
+    context_scale: [1.25, 1.25, 1.0]

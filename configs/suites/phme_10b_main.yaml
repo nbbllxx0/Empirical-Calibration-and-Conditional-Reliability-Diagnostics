@@ -1,0 +1,12 @@
+name: phme_10b_main
+experiments:
+  - name: phme_10b_latent_load_speed
+    config: configs/experiments/phme_10b_latent_load_speed.yaml
+  - name: phme_10b_tcn_load_speed
+    config: configs/experiments/phme_10b_tcn_load_speed.yaml
+  - name: phme_10b_attention_physics_load_speed
+    config: configs/experiments/phme_10b_attention_physics_load_speed.yaml
+  - name: phme_10b_gb_load_speed
+    config: configs/experiments/phme_10b_gb_load_speed.yaml
+  - name: phme_10b_tabular_load_speed
+    config: configs/experiments/phme_10b_tabular_load_speed.yaml

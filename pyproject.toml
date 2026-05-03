@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bearing-dt"
+version = "0.1.0"
+description = "Calibration-aware benchmark suite for bearing RUL prediction."
+requires-python = ">=3.10"
+authors = [
+  { name = "Shaoliang Yang" },
+  { name = "Jun Wang", email = "jwang22@scu.edu" },
+  { name = "Yunsheng Wang" },
+]
+dependencies = [
+  "numpy",
+  "pyyaml",
+  "scikit-learn",
+  "torch",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==7.4.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["bearing_dt*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

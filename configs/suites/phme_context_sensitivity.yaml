@@ -1,0 +1,20 @@
+name: phme_context_sensitivity
+experiments:
+  - name: phme_context_latent_none
+    config: configs/experiments/phme_context_latent_none.yaml
+  - name: phme_context_latent_load_speed
+    config: configs/experiments/phme_context_latent_load_speed.yaml
+  - name: phme_context_latent_load_speed_regime
+    config: configs/experiments/phme_context_latent_load_speed_regime.yaml
+  - name: phme_context_tcn_none
+    config: configs/experiments/phme_context_tcn_none.yaml
+  - name: phme_context_tcn_load_speed
+    config: configs/experiments/phme_context_tcn_load_speed.yaml
+  - name: phme_context_tcn_load_speed_regime
+    config: configs/experiments/phme_context_tcn_load_speed_regime.yaml
+  - name: phme_context_gb_none
+    config: configs/experiments/phme_context_gb_none.yaml
+  - name: phme_context_gb_load_speed
+    config: configs/experiments/phme_context_gb_load_speed.yaml
+  - name: phme_context_gb_load_speed_regime
+    config: configs/experiments/phme_context_gb_load_speed_regime.yaml

@@ -1,0 +1,21 @@
+experiment_name: phme_10b_gb_load_speed
+seed: 23
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: gradient_boosting
+  backend: numpy
+  n_estimators: 260
+  learning_rate: 0.035
+  max_thresholds: 32
+  subsample_features: 0.85
+uncertainty:
+  enabled: true
+  alpha: 0.1

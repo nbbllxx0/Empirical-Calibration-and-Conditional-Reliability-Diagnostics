@@ -1,0 +1,26 @@
+experiment_name: phme_10b_tcn_load_speed
+seed: 11
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: tcn
+  hidden: 96
+  ensemble_size: 1
+training:
+  epochs: 100
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 16
+  physics_weight: 0.0
+  cuda: true
+uncertainty:
+  enabled: true
+  alpha: 0.1

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# External data and generated experiment outputs.
+data/raw/
+data/processed/
+runs/
+paper_artifacts/
+
+# Local scratch and logs.
+tmp/
+scratch/
+*.log
+*.part
+
+# Manuscript and private audit artifacts are intentionally not part of this
+# code-only release.
+manuscript/
+*.pdf

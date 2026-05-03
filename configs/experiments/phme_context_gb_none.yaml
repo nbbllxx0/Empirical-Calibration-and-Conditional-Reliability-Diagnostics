@@ -1,0 +1,20 @@
+experiment_name: phme_context_gb_none
+seed: 23
+data:
+  processed_dir: data/processed/phme_tvoc
+context:
+  mode: none
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+model:
+  type: gradient_boosting
+  backend: numpy
+  n_estimators: 260
+  learning_rate: 0.035
+  max_thresholds: 32
+  subsample_features: 0.85
+uncertainty:
+  enabled: true
+  alpha: 0.1

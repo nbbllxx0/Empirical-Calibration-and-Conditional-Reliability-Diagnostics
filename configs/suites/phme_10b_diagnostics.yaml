@@ -1,0 +1,9 @@
+experiments:
+  - name: phme_10b_diag_no_context
+    config: configs/experiments/phme_10b_diag_no_context.yaml
+  - name: phme_10b_diag_no_features
+    config: configs/experiments/phme_10b_diag_no_features.yaml
+  - name: phme_10b_diag_no_raw
+    config: configs/experiments/phme_10b_diag_no_raw.yaml
+  - name: phme_10b_diag_stress_prefix
+    config: configs/experiments/phme_10b_diag_stress_prefix.yaml

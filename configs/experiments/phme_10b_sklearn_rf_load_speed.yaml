@@ -1,0 +1,20 @@
+experiment_name: phme_10b_sklearn_rf_load_speed
+seed: 29
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: random_forest
+  backend: sklearn
+  n_estimators: 400
+  min_samples_leaf: 2
+  n_jobs: 1
+uncertainty:
+  enabled: true
+  alpha: 0.1

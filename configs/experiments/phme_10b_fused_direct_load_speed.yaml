@@ -1,0 +1,27 @@
+experiment_name: phme_10b_fused_direct_load_speed
+seed: 21
+data:
+  processed_dir: data/processed/phme_tvoc_10b
+context:
+  mode: load_speed
+run:
+  runs_dir: runs
+split:
+  strategy: leave_one_operating_regime_out
+  seed: 101
+model:
+  type: fused_direct
+  hidden: 96
+  ensemble_size: 3
+training:
+  epochs: 120
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 18
+  physics_weight: 0.0
+  context_dropout: 0.5
+  cuda: true
+uncertainty:
+  enabled: true
+  alpha: 0.1

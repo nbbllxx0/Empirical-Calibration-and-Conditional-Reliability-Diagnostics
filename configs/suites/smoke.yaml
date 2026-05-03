@@ -1,0 +1,6 @@
+name: smoke
+experiments:
+  - name: smoke_random_forest
+    config: configs/experiments/smoke_random_forest.yaml
+  - name: smoke_digital_twin
+    config: configs/experiments/smoke_digital_twin.yaml
