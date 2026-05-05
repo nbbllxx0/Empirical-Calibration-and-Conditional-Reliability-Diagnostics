@@ -9,6 +9,18 @@ use an unverified base Anaconda interpreter for the full evidence suite.
 $PY = "python"
 ```
 
+For the main 10-bearing suite, the release also provides:
+
+```powershell
+.\scripts\run_full_paper_pipeline.ps1 -Python $PY
+```
+
+To include the preliminary five-bearing context-control diagnostic, run:
+
+```powershell
+.\scripts\run_full_paper_pipeline.ps1 -Python $PY -IncludeContextControl
+```
+
 ## 1. Install
 
 For the exact CUDA runtime used in the paper environment, install PyTorch 2.5.1

@@ -19,9 +19,10 @@ subset-study evaluation.
   split construction, model paths, uncertainty, custom MATLAB parsing, and a
   tiny end-to-end training/report smoke test.
 - `scripts/`: convenience PowerShell scripts for smoke and paper-pipeline
-  execution, plus a Python environment preflight check.
-- `README.md`, `docs/DATA.md`, `docs/COMMANDS.md`: reader-facing reproduction
-  instructions.
+  execution, including an optional preliminary context-control diagnostic, plus
+  a Python environment preflight check.
+- `README.md`, `docs/DATA.md`, `docs/COMMANDS.md`: comprehensive reader-facing
+  reproduction instructions for the full implemented experiment suite.
 - `LICENSE`: MIT license for the staged source payload.
 - `requirements-repro.txt`, `requirements-dev.txt`, `pyproject.toml`: package
   and environment metadata.

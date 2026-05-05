@@ -1,6 +1,7 @@
 param(
     [string]$Python = "python",
-    [switch]$SkipDownload
+    [switch]$SkipDownload,
+    [switch]$IncludeContextControl
 )
 
 $ErrorActionPreference = "Stop"
@@ -13,6 +14,8 @@ $BearingOut = "paper_artifacts\matrix\phme_10b_bearing"
 $FairnessOut = "paper_artifacts\matrix\phme_10b_fairness"
 $SeedOut = "paper_artifacts\matrix\phme_10b_seed_sensitivity"
 $DiagOut = "paper_artifacts\matrix\phme_10b_diagnostics"
+$ContextProcessedDir = "data\processed\phme_tvoc"
+$ContextOut = "paper_artifacts\matrix\phme_context_sensitivity"
 
 if (-not $SkipDownload) {
     & $Python -m bearing_dt.data fetch --dataset phme_tvoc --out $RawDir --extract --max-gb 30 `
@@ -100,3 +103,21 @@ if (-not $SkipDownload) {
 
 & $Python -m bearing_dt.claims audit --runs runs --out paper_artifacts\claim_audit_10b_diagnostics --prefix phme_10b_diag_cuda
 & $Python -m bearing_dt.evidence summarize-model --runs runs --out paper_artifacts\evidence_10b_diagnostics --model-token phme_10b_diag_cuda_phme_10b_diag_stress_prefix
+
+if ($IncludeContextControl) {
+    & $Python -m bearing_dt.data prepare --dataset phme_tvoc --raw $RawDir --out $ContextProcessedDir --window-size 512 --sample-rate 25600 --regime-bins 3
+
+    & $Python -m bearing_dt.matrix run-regime-matrix --processed-dir $ContextProcessedDir `
+        --base-config configs\experiments\phme_context_latent_none.yaml `
+        --base-config configs\experiments\phme_context_latent_load_speed.yaml `
+        --base-config configs\experiments\phme_context_latent_load_speed_regime.yaml `
+        --base-config configs\experiments\phme_context_tcn_none.yaml `
+        --base-config configs\experiments\phme_context_tcn_load_speed.yaml `
+        --base-config configs\experiments\phme_context_tcn_load_speed_regime.yaml `
+        --base-config configs\experiments\phme_context_gb_none.yaml `
+        --base-config configs\experiments\phme_context_gb_load_speed.yaml `
+        --base-config configs\experiments\phme_context_gb_load_speed_regime.yaml `
+        --out $ContextOut --runs-dir runs --prefix phme_context5 --no-resume
+
+    & $Python -m bearing_dt.claims audit --runs runs --out paper_artifacts\claim_audit_context_sensitivity --prefix phme_context5
+}

@@ -14,6 +14,9 @@ The release is intentionally code-only. It does not include raw PHME archives,
 processed arrays, trained checkpoints, generated result tables, figures,
 manuscript source, or PDFs.
 
+This folder is the Git release root. A clean upload should use this directory
+as the repository root, not the parent manuscript workspace.
+
 ## Authors and Contact
 
 Authors: Shaoliang Yang, Jun Wang, and Yunsheng Wang.
@@ -83,6 +86,11 @@ directories such as `data/`, `runs/`, and `paper_artifacts/`.
 | Seed sensitivity | Three-seed, three-regime bounded diagnostic | `paper_artifacts/matrix/phme_10b_seed_sensitivity` |
 | Diagnostics and stress | Ablations, prefix observation, noise/raw-channel-loss stress | `paper_artifacts/matrix/phme_10b_diagnostics` |
 | Preliminary context control | Five-bearing design-traceability context diagnostic | `paper_artifacts/matrix/phme_context_sensitivity` |
+
+The README is the primary runbook. `docs/COMMANDS.md` contains the same suite in
+manual command form, while `scripts/run_full_paper_pipeline.ps1` executes the
+main 10-bearing evidence path and can optionally include the preliminary
+context-control diagnostic.
 
 ## Repository Layout
 
@@ -174,7 +182,7 @@ evaluation. See `docs/DATA.md` for details.
 
 ## Full Paper Pipeline
 
-Run the full pipeline:
+Run the main 10-bearing paper pipeline:
 
 ```powershell
 .\scripts\run_full_paper_pipeline.ps1 -Python $PY
@@ -187,7 +195,14 @@ If the selected PHME ZIP files are already downloaded and extracted under
 .\scripts\run_full_paper_pipeline.ps1 -Python $PY -SkipDownload
 ```
 
-The script runs:
+To run the main 10-bearing pipeline plus the preliminary five-bearing
+context-control diagnostic, add `-IncludeContextControl`:
+
+```powershell
+.\scripts\run_full_paper_pipeline.ps1 -Python $PY -IncludeContextControl
+```
+
+The default script runs:
 
 1. selected PHME download and extraction;
 2. PHME preprocessing into `data\processed\phme_tvoc_10b`;
@@ -200,8 +215,32 @@ The script runs:
 9. bounded seed sensitivity;
 10. 10-bearing diagnostics and stress summaries.
 
-For manual execution and the separate preliminary five-bearing context-control
-diagnostic, use the commands in `docs/COMMANDS.md`.
+With `-IncludeContextControl`, the script also prepares the five-bearing
+development processed root and runs the preliminary context-control matrix and
+claim audit. For fully manual execution, use the commands in `docs/COMMANDS.md`.
+
+## Full-Suite Output Map
+
+Use this map to confirm that a complete local run created the expected evidence
+families. The release does not ship these files; they are generated locally.
+
+| Step | Evidence family | Required command path | Expected output |
+| --- | --- | --- | --- |
+| 1 | 10-bearing processed PHME subset | `bearing_dt.data prepare` | `data/processed/phme_tvoc_10b/manifest.json` |
+| 2 | Matched sensitivity matrix | `bearing_dt.matrix run-regime-matrix` | `paper_artifacts/matrix/phme_10b_matched/matrix_manifest.csv` |
+| 3 | Strict primary matrix | `bearing_dt.matrix run-regime-matrix --separate-calibration` | `paper_artifacts/matrix/phme_10b_separate_calibration/matrix_manifest.csv` |
+| 4 | Strict primary claim summary | `bearing_dt.claims audit` | `paper_artifacts/claim_audit_10b_separate_calibration/claim_summary.csv` |
+| 5 | Strict paired statistics | `bearing_dt.stats compare` | `paper_artifacts/statistics_10b_separate_calibration_with_rf/paired_summary.csv` |
+| 6 | Conditional coverage and exclusion audit | `bearing_dt.diagnostics` | `paper_artifacts/conditional_coverage_10b_separate_calibration/`, `paper_artifacts/exclusion_bias_10b/` |
+| 7 | Leave-bearing-out check | `bearing_dt.matrix run-bearing-matrix` | `paper_artifacts/matrix/phme_10b_bearing/matrix_manifest.csv` |
+| 8 | Ensemble fairness and RF comparator | `bearing_dt.matrix run-regime-matrix` | `paper_artifacts/matrix/phme_10b_fairness/matrix_manifest.csv` |
+| 9 | Matched RF-inclusive paired statistics | `bearing_dt.stats compare` | `paper_artifacts/statistics_10b_with_rf/paired_summary.csv` |
+| 10 | Seed sensitivity | `bearing_dt.matrix run-regime-matrix --model-seed` | `paper_artifacts/matrix/phme_10b_seed_sensitivity/matrix_manifest.csv` |
+| 11 | Diagnostics and stress suite | `bearing_dt.matrix run-regime-matrix` and `bearing_dt.evidence summarize-model` | `paper_artifacts/matrix/phme_10b_diagnostics/`, `paper_artifacts/evidence_10b_diagnostics/` |
+| 12 | Preliminary context control | `scripts/run_full_paper_pipeline.ps1 -IncludeContextControl` or `docs/COMMANDS.md` Section 10 | `paper_artifacts/matrix/phme_context_sensitivity/matrix_manifest.csv` |
+
+The manuscript tables are not regenerated inside this code-only release. They
+are generated in the manuscript workspace from these local CSV/JSON outputs.
 
 ## Main Evidence Commands
 
