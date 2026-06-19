@@ -21,7 +21,7 @@ scratch/
 *.log
 *.part
 
-# Manuscript and private audit artifacts are intentionally not part of this
-# code-only release.
+# Manuscript PDFs, submission sources, and local audit materials are outside
+# the public code release.
 manuscript/
 *.pdf

@@ -120,9 +120,9 @@ Summarize matched-sensitivity claims:
 
 ## 10. Preliminary Context-Control Diagnostic
 
-The paper uses this as a design-control analysis, not as the primary 10-bearing
-evidence endpoint. It uses the five-bearing development subset, so prepare a
-separate processed root:
+The paper uses this as a design-control analysis, not as the primary
+10-bearing evidence endpoint. It uses a five-bearing diagnostic subset, so
+prepare a separate processed root:
 
 ```powershell
 & $PY -m bearing_dt.data fetch --dataset phme_tvoc --out data\raw\phme_tvoc --extract --max-gb 10 --file B01.zip --file B03.zip --file B05.zip --file B11.zip --file B12.zip
@@ -138,7 +138,7 @@ Then run:
 
 ## 11. Regenerate Paper-Facing Summaries
 
-This code-only release does not ship the manuscript builder. The numerical
+This repository does not include manuscript-generation utilities. The numerical
 tables used in the paper are generated from the CSV/JSON outputs created by the
 commands above.
 

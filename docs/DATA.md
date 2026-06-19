@@ -39,7 +39,7 @@ To download and extract the 10-bearing subset, use the full command in
 `docs/COMMANDS.md` or `scripts/run_full_paper_pipeline.ps1`. The command has a
 `--max-gb` guard because the selected archives are still large.
 
-No raw or processed data are shipped in this code-only release.
+No raw or processed data are included in this repository.
 
 The preliminary context-control diagnostic used a smaller five-bearing
 processed set:

@@ -1,6 +1,6 @@
-# Release Manifest
+# Repository Contents
 
-This is a code-only release payload for the calibration-aware bearing RUL
+This repository is the public code release for the calibration-aware bearing RUL
 subset-study evaluation.
 
 ## Included
@@ -21,9 +21,9 @@ subset-study evaluation.
 - `scripts/`: convenience PowerShell scripts for smoke and paper-pipeline
   execution, including an optional preliminary context-control diagnostic, plus
   a Python environment preflight check.
-- `README.md`, `docs/DATA.md`, `docs/COMMANDS.md`: comprehensive reader-facing
+- `README.md`, `docs/DATA.md`, `docs/COMMANDS.md`: comprehensive
   reproduction instructions for the full implemented experiment suite.
-- `LICENSE`: MIT license for the staged source payload.
+- `LICENSE`: MIT license for the source code.
 - `requirements-repro.txt`, `requirements-dev.txt`, `pyproject.toml`: package
   and environment metadata.
 
@@ -33,14 +33,14 @@ subset-study evaluation.
 - Processed PHME windows/features.
 - `runs/` directories, checkpoints, predictions, metrics, and run manifests.
 - Generated `paper_artifacts/` tables, summaries, and figures.
-- Manuscript source, PDFs, local audit records, and private scratch outputs.
-- Any precomputed evidence bundle. Running the commands creates local evidence
-  outputs in ignored directories; none are shipped in this release.
+- Manuscript source and PDFs.
+- Local audit records and temporary outputs.
+- Precomputed result files. Running the commands creates generated outputs in
+  ignored directories; none are included in this repository.
 
 ## Expected Generated Directories
 
-The commands in the README create the following local directories in a clean
-clone:
+The commands in the README create the following directories in a clean clone:
 
 ```text
 data/raw/phme_tvoc/
