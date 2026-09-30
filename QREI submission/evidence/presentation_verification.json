@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-29",
-  "purpose": "Figures and tables redrawn; numerical inputs confirmed unchanged by SHA-256",
+  "date": "2026-09-30",
+  "purpose": "Figures and tables redrawn; Figures 1-3 restyled on 2026-09-30 (author-selected container style); numerical inputs confirmed unchanged by SHA-256",
   "numerical_inputs_unchanged": true,
   "sha256_inputs": {
     "QREI submission\\results\\endpoint_v3\\joined_predictions.csv": "2c74a755c6a5b57207b0306bbccc0f4729733515bb84d7262960abda03e437e0",
@@ -9,24 +9,25 @@
     "QREI submission\\results\\endpoint_v3\\rank_probabilities.csv": "1cd8c85bd124e8333ed0b42650081ce13dd4ad1125375039650b9560112a5a3c",
     "QREI submission\\results\\endpoint_v3\\maintenance_summary.csv": "581002aa8be0f98141c6818a9c2c020ab18ea1d3deaaca70e6987385d01f87e1",
     "QREI submission\\protocol.json": "d67169a8eaebcbad74c02c8c3f61b1ec4a207274ddc0e22e779525a259998e3b",
-    "QREI submission\\protocol_endpoint_v3.json": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9"
+    "QREI submission\\protocol_endpoint_v3.json": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9",
+    "QREI submission\\evidence\\endpoint_ledger.csv": "f4dda2984b7f06e2f2534aa6f6bbb81b3a72c75a92bd7ca5dc18bc5b0f44c83b"
   },
   "figure_generators": {
     "check_references.py": "6842cb51cb6e0b4c265c402bc929d70ef0f22b01b7e788afb4ef07e17d465693",
     "data_figures.py": "fe58c3191c8a3f3c9c6bc4abaaf1e56d434e562c5bf10615837d92c1e5de3ab1",
-    "diagrams.py": "6850d2369f75799f5a9b4d08056ada4364b7cd7bc2ce78fe52fee0b36d2bbc75"
+    "diagrams.py": "a660aaf84c39b56bd310bc8a8daae8227090c1e14d4d6b8d5bec20cbf15ccc1c"
   },
   "figures": {
     "accuracy.pdf": "dd53361bb771927cf6588fa4f0407ed41407299294cbcc18d2709c676fada712",
     "all_forecasts.pdf": "4e4a252fa09c21de9e892e6a119d6b70f5ca5a9310569015790695d5a5d5e0cb",
     "all_temperature_histories.pdf": "5921edaf29f30ec3d0c21be564613549209e8621a9246439db8a572229b06bc5",
     "all_vibration_histories.pdf": "1624d5f9be5982526db8842bb506bd7874bcb34b6dbe1f54c895150194285c6c",
-    "architecture.pdf": "967281c6902164cf1910aae86667fc74188ca1869c22d1fecae8c180065e923e",
+    "architecture.pdf": "fabc4a312660b6723e89a295d1c49ae7678496ddbe3462c9d97d56113723b922",
     "comparison.pdf": "d42258c67134761c92eae3d2112180f52a10b5cedfd46d05e83b8de0c92db12c",
     "maintenance.pdf": "ee41a4ccc0ac133d1364649b7819b49b06042062c6f277593710f52d401913c0",
     "sensors.pdf": "f10713d2312cd32342c941fbe8ae7ff83bde3e8e6c1cc4b83b12697cfa975945",
-    "signal_chain.pdf": "2d58500ff6c5720d5ed0a1ff271b901353364d54748ac8c404ac94f5048a55dd",
-    "study_design.pdf": "29e3b977d4368574abf343f33adb9b4eeb4a479643809d8dee01d14a2b5ba803"
+    "signal_chain.pdf": "209dfd1660460b21e9921921136466ceb36c5b89ccd96400b534ef880f80573c",
+    "study_design.pdf": "4228e858fac6cc638a933e5c5194a03a33aa41ebe377cbb192fc68a00f43c464"
   },
   "visual_inspection": "All main and supplementary pages rendered and inspected at 50-110 dpi; diagrams rendered at 200 dpi"
 }

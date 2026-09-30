@@ -15,7 +15,7 @@ each 1.6 s vibration record, standardized each window to unit variance and label
 sampling-rate statement is therefore incorrect, and its results depend on this preprocessing.
 
 **Revised study.** The corrected, physical-time analysis is in `bearing_dt/qrei/`, with its fixed protocols, aggregate
-results, verification records and figure scripts in [`QREI submission/`](QREI%20submission/README.md). It uses both
+results, verification records and data-figure script in [`QREI submission/`](QREI%20submission/README.md). It uses both
 channels over the full records in physical units, documented stopping criteria, forecasts in hours, and
 leave-one-bearing-out evaluation. It accompanies the manuscript *Evaluating Bearing Remaining Useful Life Forecasts
 for Maintenance under Temperature and Vibration Stopping Criteria* (in preparation). See `CHANGELOG.md`.

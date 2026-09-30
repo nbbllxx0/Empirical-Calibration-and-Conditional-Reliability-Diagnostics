@@ -1,6 +1,6 @@
 # Revised study: bearing RUL forecasts under temperature and vibration stopping criteria
 
-This folder holds the fixed protocols, aggregate results, verification records and figure scripts of the revised study
+This folder holds the fixed protocols, aggregate results, verification records and data-figure script of the revised study
 
 > S. Yang, J. Wang and Y. Wang, *Evaluating Bearing Remaining Useful Life Forecasts for Maintenance under Temperature and Vibration Stopping Criteria* (manuscript in preparation).
 
@@ -22,7 +22,7 @@ The analysis code is the `bearing_dt.qrei` package in this repository. The folde
 | `results/primary/` | Vibration-only comparison: per-bearing and summary metrics, bootstrap intervals, rank fractions, maintenance results; `joined_predictions.csv.gz` holds every forecast. |
 | `results/endpoint_v3/` | Endpoint-aware comparison (main results of the paper), same files; `comparison/` holds paired changes, seed results, conditional results, threshold crossings and the spectrum record selection. |
 | `evidence/` | Endpoint ledger, sensor calibration factors, nominal-range flags, number ledger and independent verification records. |
-| `manuscript/figure_sources/` | Scripts for all figures: `diagrams.py` (schematics; SVG exported with Inkscape) and `data_figures.py` (data figures). |
+| `manuscript/figure_sources/` | `data_figures.py`, which draws the data figures of the paper (Figures 4–7 and S1–S3) from the result files. |
 | `reproduce.ps1` | Stage commands: `prepare`, `fit`, `summarize`, `verify`, `paper`. |
 | `../data/processed/phme_tvoc_10b_endpoint_v3/` | `features.csv.gz` (endpoint-aware features for all 14,297 acquisitions) and `manifest.json`. |
 

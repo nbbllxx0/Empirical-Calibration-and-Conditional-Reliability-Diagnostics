@@ -40,7 +40,4 @@ if ($Stage -eq 'paper') {
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.build_supplement')
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.audit_tables')
     Invoke-Analysis -Arguments @('-u','QREI submission/manuscript/figure_sources/data_figures.py')
-    # Schematic diagrams (Figures 1-3) need Pillow and Inkscape (INKSCAPE environment variable or PATH).
-    & $NeuralPython 'QREI submission/manuscript/figure_sources/diagrams.py'
-    if ($LASTEXITCODE -ne 0) { throw 'Diagram build failed' }
 }

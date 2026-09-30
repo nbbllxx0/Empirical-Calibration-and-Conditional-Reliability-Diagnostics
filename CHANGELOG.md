@@ -9,7 +9,8 @@
   targets; B01 and B05 are diagnostic only.
 - Forecasts are in hours with fitting-bearing scales only; evaluation uses eight leave-one-bearing-out folds with
   separate validation and calibration bearings and a whole-bearing bootstrap.
-- Published the fixed protocols, aggregate results, verification records and figure scripts in `QREI submission/`.
+- Published the fixed protocols, aggregate results, verification records and the data-figure script in
+  `QREI submission/`.
 
 ### Correction to the earlier release
 
