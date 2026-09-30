@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-30 — caption and figure corrections
+
+- Table S5 caption: the temperature statistic is the higher of the two bearing temperatures (T1, T2), not their mean.
+- First-rank table caption defines the coverage gap as the absolute difference between coverage and the nominal 0.90.
+- Two unused number macros removed from `build_revision.py` (and from `evidence/claims_ledger.csv`).
+- Data figures: envelope-spectrum legend moved clear of the defect-order lines, integer time ticks, markers with equal
+  values offset in the maintenance panel, and the schematic axis relabelled "Elapsed time". No number changes.
+
 ## 2026-09 — revised study
 
 - Added `bearing_dt/qrei/`, a corrected physical-time pipeline. Both accelerometer channels are read by name over the

@@ -106,7 +106,8 @@ def main():
         rows.append([b, fmt(t.first_crossing_elapsed_hours), fmt(t.first_crossing_remaining_hours), fmt(first)])
     table(out/"crossings.tex", ["Test", r"First 110~$^{\circ}$C (h)", "Remaining time (h)", "First 8 g RMS (h)"], rows,
           "@{}llll@{}",
-          "First acquisition at which the mean temperature reaches 110~$^{\\circ}$C or a channel RMS reaches 8~g. These "
+          "First acquisition at which the higher of the two bearing temperatures (T1, T2) reaches 110~$^{\\circ}$C or a "
+          "channel RMS reaches 8~g. These "
           "acquisition statistics do not reproduce the controller's filtering or persistence rules.", "tab:crossings",
           placement="htbp")
     manifest = json.loads(Path("data/processed/phme_tvoc_10b_endpoint_v3/manifest.json").read_text())

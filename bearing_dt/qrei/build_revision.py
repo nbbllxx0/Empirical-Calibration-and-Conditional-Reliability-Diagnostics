@@ -96,13 +96,11 @@ def build():
         "DegradationError": (s.loc["degradation", "nMAE"], ".3f"),
         "TcnError": (s.loc["tcn", "nMAE"], ".3f"),
         "AttentionError": (s.loc["attention", "nMAE"], ".3f"),
-        "ForestError": (s.loc["random_forest", "nMAE"], ".3f"),
         "RankHour": (top.loc["MAE_hours", "P_rank_1"], ".2f"),
         "RankNorm": (top.loc["nMAE", "P_rank_1"], ".2f"),
         "RankOther": (best_other.P_rank_1, ".2f"),
         "PointLoss": (policy.loc[("representation", "point"), "loss"], ".2f"),
         "PointLate": (policy.loc[("representation", "point"), "too_late"]*8, ".0f"),
-        "PointUnused": (policy.loc[("representation", "point"), "unused_life_fraction"], ".3f"),
         "LowerLoss": (policy.loc[("representation", "lower_bound"), "loss"], ".2f"),
         "LowerUnused": (policy.loc[("representation", "lower_bound"), "unused_life_fraction"], ".3f"),
         "AlwaysLoss": (policy.loc[("always_action", "control"), "loss"], ".2f"),
@@ -175,7 +173,8 @@ def build():
         rows.append([CRITERION_LABELS[c], winner, f"{v.P_rank_1:.4f}"])
     table(PAPER/"tables/ranks.tex", ["Criterion", "Most frequent first rank", "Fraction"], rows, "@{}llr@{}",
           "Most frequent first-ranked learned predictor for each criterion over 10,000 bearing resamples. Ties receive "
-          "fractional credit. These fractions describe the fixed fits; they are not probabilities that a model is best in general.",
+          "fractional credit. The coverage gap of a bearing is the absolute difference between its interval coverage and the "
+          "nominal 0.90. These fractions describe the fixed fits; they are not probabilities that a model is best in general.",
           "tab:ranks", placement="htbp")
 
     rows = []

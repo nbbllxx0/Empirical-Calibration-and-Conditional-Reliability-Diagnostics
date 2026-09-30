@@ -19,6 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
+from matplotlib.ticker import MaxNLocator
 import numpy as np
 import pandas as pd
 from scipy import signal
@@ -80,6 +81,7 @@ def letter(subfig, text: str, x=0.0, y=1.0) -> None:
 def tag(ax, bearing: str, extra: str = "", short: bool = False) -> None:
     label = STOP[bearing].replace(" stop", "") if short else STOP[bearing]
     ax.set_title(r"$\mathbf{" + bearing + r"}$" + "   " + label + extra, loc="left", fontsize=6.8, pad=3)
+    ax.xaxis.set_major_locator(MaxNLocator(nbins=4, integer=True))
 
 
 def temperatures(bearing: str) -> pd.DataFrame:
@@ -127,8 +129,7 @@ def spectrum(ax, selection: pd.DataFrame, bearing: str) -> None:
         keep = (f / rotation >= 0.3) & (f / rotation <= 24)
         early = row.selection.startswith("Early")
         ax.semilogy(f[keep] / rotation, psd[keep] * rotation, lw=0.7, color=BLUE if early else ORANGE,
-                    label=("Early record" if early else "Penultimate record")
-                    + f" ({row.elapsed_hours:.2f} h, {row.speed_rpm:,.0f} rpm)")
+                    label=("Early" if early else "Penultimate") + f": {row.elapsed_hours:.2f} h, {row.speed_rpm:,.0f} rpm")
     orders = defect_orders()
     for key, ls, ha, dx in (("BSF", (0, (6, 2, 1, 2)), "right", -0.25), ("BPFO", (0, (1.2, 1.4)), "center", 0.0),
                             ("BPFI", (0, (4, 2)), "left", 0.25)):
@@ -139,8 +140,9 @@ def spectrum(ax, selection: pd.DataFrame, bearing: str) -> None:
                  loc="left", fontsize=6.8, pad=11)
     ax.set_xlabel("Envelope frequency / shaft frequency")
     ax.set_xlim(0, 24.5)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.0, 0.95), fontsize=6, handlelength=1.4, frameon=True,
-              facecolor="white", edgecolor="none", framealpha=0.9, borderpad=0.3)
+    # Above the traces and to the right of the BPFI line; figure_sensors adds the headroom.
+    ax.legend(loc="upper right", bbox_to_anchor=(1.0, 1.0), fontsize=6, handlelength=1.4, frameon=False,
+              borderpad=0.3)
 
 
 def figure_sensors(features: pd.DataFrame) -> None:
@@ -166,6 +168,8 @@ def figure_sensors(features: pd.DataFrame) -> None:
     axes = bottom.subplots(1, 2, sharey=True)
     for ax, b in zip(axes, ("B02", "B10")):
         spectrum(ax, selection, b)
+    low, high = axes[0].get_ylim()
+    axes[0].set_ylim(low, high * 60)
     axes[0].set_ylabel("Envelope power (g²/order)")
     letter(bottom, "c")
     save(fig, "sensors")
@@ -183,6 +187,7 @@ def forecast_axis(ax, pred, b, controls=True, short=False):
     life = float(g.observed_duration_hours.iloc[0])
     tag(ax, b, f", {life:.2f} h" if short else f", {life:.2f} h life", short=short)
     ax.set_ylim(bottom=0)
+    ax.yaxis.set_major_locator(MaxNLocator(nbins=4, integer=True))
     ax.set_xlabel("Elapsed time (h)")
 
 
@@ -321,7 +326,7 @@ def schematic(ax) -> None:
     ax.set_ylim(0, 1.05)
     ax.set_xticks([])
     ax.set_yticks([0, h], ["0", "h"])
-    ax.set_xlabel("Elapsed operating time")
+    ax.set_xlabel("Elapsed time")
     ax.set_ylabel("Remaining time")
     ax.legend(loc="upper right", fontsize=6.2)
 
@@ -346,17 +351,21 @@ def figure_maintenance() -> None:
     for ax, lead in zip(axes, (0.5, 1.0, 2.0)):
         g = m[m.required_lead_hours == lead]
         ax.grid(color=GRID, lw=0.5)
+        # A small horizontal offset per method separates markers that share a value; the caption says so.
+        dodge = {name: 0.017 * (k - 3) for k, name in enumerate([n for n, _, _ in methods] + ["always_action"])}
+        dodge["never_action"] = 0.0
         for model, color, marker in methods:
             for policy, fill in (("point", "white"), ("lower_bound", color)):
                 r = g[(g.model == model) & (g.policy == policy)].iloc[0]
-                ax.plot(r.too_late, r.unused_life_fraction, marker=marker, ms=4.6, color=color, mfc=fill, mew=0.8,
-                        ls="none", zorder=3)
+                ax.plot(r.too_late + dodge[model], r.unused_life_fraction, marker=marker, ms=4.6, color=color,
+                        mfc=fill, mew=0.8, ls="none", zorder=3)
         for model, marker, color, ms in (("always_action", "*", INK, 6.5), ("never_action", "X", RED, 5.2)):
             r = g[g.model == model].iloc[0]
-            ax.plot(r.too_late, r.unused_life_fraction, marker=marker, ms=ms, color=color, ls="none", zorder=3)
+            ax.plot(r.too_late + dodge[model], r.unused_life_fraction, marker=marker, ms=ms, color=color, ls="none",
+                    zorder=3)
         ax.text(0.98, 0.98, f"h = {lead:g} h", transform=ax.transAxes, ha="right", va="top", fontsize=6.8,
                 fontweight="bold")
-        ax.set_xlim(-0.05, 1.05)
+        ax.set_xlim(-0.1, 1.08)
         ax.set_ylim(-0.04, 1.0)
         ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
         ax.set_xlabel("Bearings with no timely action")
