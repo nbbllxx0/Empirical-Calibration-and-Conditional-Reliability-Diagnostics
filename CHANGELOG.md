@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-30 — wording and table precision
+
+- Supplementary Table S10 prints first-rank fractions to four decimals, so the B04-deletion value (0.6998) is not
+  shown as 0.700 next to "None"; the 0.70 threshold is applied to unrounded fractions, and `audit_tables.py`
+  now checks the "None" entries against the unrounded values.
+- Wording: the study does not establish a robust preferred model across the tested choices (replacing "not
+  identifiable"). No number changed.
+
 ## 2026-09-30 — secondary analyses: seeds, fold roles and ranking diagnostics
 
 - `QREI submission/protocol_sensitivity_addendum.json` records the analyses below before they were run. Primary folds,

@@ -188,7 +188,9 @@ def main():
     for row in rows:
         key=next((k for k,l in labels.items() if l==row[0]),None) or 'endpoint_all8_without_'+row[0].rsplit(' ',1)[1]
         v=best[key]
-        check('rankscenarios',row[0],'largest',row[1],f"{float(v['first_rank_fraction']):.3f} ({names[v['model']]})",src)
+        check('rankscenarios',row[0],'largest',row[1],f"{float(v['first_rank_fraction']):.4f} ({names[v['model']]})",src)
+        stable=[r for r in read(src) if r['scenario']==key and float(r['first_rank_fraction'])>=.7]
+        check('rankscenarios',row[0],'stable',row[2]=='None',not stable,src)
     OUT.mkdir(parents=True,exist_ok=True)
     with (OUT/'table_cells_checked.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=checks[0].keys());w.writeheader();w.writerows(checks)

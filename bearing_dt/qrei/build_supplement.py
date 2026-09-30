@@ -64,12 +64,13 @@ def sensitivity_tables(root, out, cfg):
         groups = []
         for model, h in stable.groupby("model", sort=False):
             groups.append(esc(NAMES[model]) + ": " + "; ".join(CRITERION_LABELS[c].lower() for c in h.criterion))
-        rows.append([label, f"{v.first_rank_fraction:.3f} ({esc(NAMES[v.model])})", ". ".join(groups) or "None"])
+        rows.append([label, f"{v.first_rank_fraction:.4f} ({esc(NAMES[v.model])})", ". ".join(groups) or "None"])
     table(out/"rankscenarios.tex", ["Comparison", "Largest fraction (model)", r"Criteria with a fraction $\ge 0.70$, by model"],
           rows, r"@{}>{\raggedright\arraybackslash}p{42mm}>{\raggedright\arraybackslash}p{40mm}>{\raggedright\arraybackslash}p{68mm}@{}",
           "Largest first-rank fraction in each comparison, over the nine criteria, and every criterion whose leading "
           "fraction reaches the 0.70 threshold of target R. Rows below the refits hold the primary fits fixed and "
-          "delete one scored bearing. All rows use the same bootstrap generator and fractional tie credit.",
+          "delete one scored bearing. All rows use the same bootstrap generator and fractional tie credit. The 0.70 "
+          "threshold is applied to unrounded fractions.",
           "tab:rankscenarios", placement="htbp", size=r"\footnotesize")
     roles = pd.read_csv(sens/"roles_model_summary.csv").set_index(["scenario", "model"])
     maint = pd.read_csv(sens/"roles_maintenance_one_hour.csv").set_index(["scenario", "model", "policy"])
