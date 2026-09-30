@@ -1,12 +1,12 @@
 model,nMAE_v2,nMAE_v3,delta_v3_minus_v2,CI_low,CI_high,improved_bearings,independent_bearings,inference
-attention,0.33979862400703165,0.35921671723748677,0.019418093230455118,-0.06143126516543279,0.09945632046001412,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-context_only,0.8554897547405612,0.8554897547405612,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-custom_boosting,0.5390000805622749,0.5485485473653431,0.009548466803068239,-0.05379135347531323,0.0874926156117665,5,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-degradation,4.73390404980538,4.73390404980538,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+attention,0.3204598011622752,0.3416353447236865,0.02117554356141131,-0.0712988608465516,0.11244750100784145,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+context_only,0.6951368128603175,0.6951368128603175,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+custom_boosting,0.5782405917714615,0.5691759646898141,-0.009064627081647327,-0.10736961475641,0.07893350795719227,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+degradation,2.410562648418937,2.410562648418937,-2.0816681711721685e-16,-6.661338147750939e-16,4.163336342344337e-17,1,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
 elapsed_clock,0.5006064981484507,0.5006064981484507,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-random_forest,0.44119606895280716,0.44809515380328974,0.0068990848504825765,-0.020916275862417205,0.0366504501828529,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-representation,0.33271223985497395,0.31553809806907623,-0.01717414178589769,-0.07133086814843981,0.025038005429380807,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-standard_boosting,0.5408083787957136,0.5454931683375825,0.004684789541868923,-0.0655265683367829,0.07191034200433202,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-subspace_ridge,0.5520441574545967,0.8887669413758543,0.33672278392125765,-0.034056343051312686,0.8769491534590771,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
-tcn,0.36843896996675873,0.3731148869966106,0.004675917029851845,-0.09758120935115389,0.09447742564710725,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+random_forest,0.4530993173722299,0.4568249451725767,0.003725627800346727,-0.034829809876306676,0.048078586268311775,5,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+representation,0.34806220603786947,0.31231806497330294,-0.03574414106456651,-0.12780545795401943,0.03987336951811079,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+standard_boosting,0.5518829390472555,0.5557184188923147,0.0038354798450591296,-0.06846023196857566,0.07425048827105285,5,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+subspace_ridge,0.5205822266012063,0.8031115399101543,0.282529313308948,-0.03643648219013675,0.7413306235144612,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+tcn,0.3855430248340441,0.38421140980931,-0.0013316150247341188,-0.10561153052997417,0.09984565625894987,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
 time_only,0.8221354367585161,0.8221354367585161,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results

@@ -1,5 +1,5 @@
 {
-  "created": "2026-09-29T18:28:58.891803",
+  "created": "2026-09-30T09:26:40.493595",
   "record_count": 14297,
   "supervised_records": 13348,
   "signal_shape": [
@@ -110,6 +110,20 @@
     "dynamic_load_N",
     "speed_rpm"
   ],
+  "context_source": {
+    "values": "set values of the controller",
+    "columns": {
+      "static_load_N": "setStatLoad / N",
+      "dynamic_load_N": "setDynLoad / N",
+      "speed_rpm": "setSpeed / rpm"
+    },
+    "measured_columns_kept_for_reference": {
+      "measured_static_load_N": "meanAbs_statLoad / N",
+      "measured_dynamic_load_N": "peak_dynLoad / N",
+      "measured_speed_rpm": "meanAbs_speed / rpm"
+    },
+    "check": "evidence/operating_channel_check.csv"
+  },
   "temperature_primary": false,
   "defect_orders": {
     "BPFO": 8.649014084507042,
@@ -118,6 +132,6 @@
     "FTF": 0.4552112676056338
   },
   "protocol_sha256": "d67169a8eaebcbad74c02c8c3f61b1ec4a207274ddc0e22e779525a259998e3b",
-  "runtime_seconds": 246.49316310882568,
+  "runtime_seconds": 407.7094578742981,
   "source": "data/raw/phme_tvoc"
 }

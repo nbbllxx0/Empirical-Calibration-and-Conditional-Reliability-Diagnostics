@@ -11,6 +11,7 @@ The analysis code is the `bearing_dt.qrei` package in this repository. The folde
 - Uses the ten single-archive tests of the public PHME run-to-failure bearing archive (B01, B02, B03, B04, B05, B08, B10, B11, B12, B17; Zenodo DOI [10.5281/zenodo.10868257](https://doi.org/10.5281/zenodo.10868257)). The seven multipart tests are not processed.
 - Treats the eight tests with a documented vibration or temperature stop as supervised targets. B01 (no preset criterion) and B05 (deliberately interrupted) are used for diagnosis only.
 - Processes both accelerometer channels over the full 1.6 s record in physical units (10 g/V), with the true 128 or 64 kHz sampling rate resampled to 64 kHz; features include band powers, a 6–10 kHz Hilbert envelope and power at bearing defect orders, plus causal temperature and threshold histories.
+- Uses the set values of static load, dynamic-load amplitude and shaft speed as the operating context and for the defect-order frequencies. The archive's measured load and speed channels are faulty in five tests (B04 speed is half the set speed, B01 speed stops near 3,000 rpm, B10 and B17 static load stays far above its set range, B04 and B05 dynamic load is about half its set amplitude); `evidence/operating_channel_check.csv` compares them with the set values and the vibration spectrum.
 - Forecasts residual time in hours without using the test bearing's life, in eight leave-one-bearing-out folds with separate validation and calibration bearings.
 - Compares eight learned predictors with six reference controls, resamples whole bearings (10,000 draws) and evaluates a first-trigger maintenance rule.
 
@@ -21,7 +22,7 @@ The analysis code is the `bearing_dt.qrei` package in this repository. The folde
 | `protocol.json`, `protocol_endpoint_v3.json` | Analysis settings and evaluation targets, fixed before the corresponding models were fitted. |
 | `results/primary/` | Vibration-only comparison: per-bearing and summary metrics, bootstrap intervals, rank fractions, maintenance results; `joined_predictions.csv.gz` holds every forecast. |
 | `results/endpoint_v3/` | Endpoint-aware comparison (main results of the paper), same files; `comparison/` holds paired changes, seed results, conditional results, threshold crossings and the spectrum record selection. |
-| `evidence/` | Endpoint ledger, sensor calibration factors, nominal-range flags, number ledger and independent verification records. |
+| `evidence/` | Endpoint ledger, sensor calibration factors, operating-channel check, nominal-range flags, number ledger and independent verification records. |
 | `manuscript/figure_sources/` | `data_figures.py`, which draws the data figures of the paper (Figures 4–7 and S1–S3) from the result files. |
 | `reproduce.ps1` | Stage commands: `prepare`, `fit`, `summarize`, `verify`, `paper`. |
 | `../data/processed/phme_tvoc_10b_endpoint_v3/` | `features.csv.gz` (endpoint-aware features for all 14,297 acquisitions) and `manifest.json`. |

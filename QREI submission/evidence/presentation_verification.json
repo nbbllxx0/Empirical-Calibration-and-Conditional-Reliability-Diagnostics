@@ -1,33 +1,34 @@
 {
   "date": "2026-09-30",
-  "purpose": "Figures and tables redrawn; Figures 1-3 restyled on 2026-09-30 (author-selected container style); numerical inputs confirmed unchanged by SHA-256",
-  "numerical_inputs_unchanged": true,
+  "purpose": "All models refitted on 2026-09-30 with the set operating values as context (the measured channels are faulty in five tests; evidence/operating_channel_check.csv); tables, number macros and data figures regenerated from the refitted results",
+  "numerical_inputs_unchanged": false,
+  "previous_run": "measured-channel run of 2026-09-29, public commit 2ca9394 and earlier",
   "sha256_inputs": {
-    "QREI submission\\results\\endpoint_v3\\joined_predictions.csv": "2c74a755c6a5b57207b0306bbccc0f4729733515bb84d7262960abda03e437e0",
-    "QREI submission\\results\\endpoint_v3\\model_summary.csv": "217bb1b3eee728915f9a271e8b502c2b824db3259af8098925e4fc624653c999",
-    "QREI submission\\results\\endpoint_v3\\per_bearing_metrics.csv": "72b7d1e59a6cc18128a7aae4bd61b6a99bcd93c15857309c916dda2f16e9a9ed",
-    "QREI submission\\results\\endpoint_v3\\rank_probabilities.csv": "1cd8c85bd124e8333ed0b42650081ce13dd4ad1125375039650b9560112a5a3c",
-    "QREI submission\\results\\endpoint_v3\\maintenance_summary.csv": "581002aa8be0f98141c6818a9c2c020ab18ea1d3deaaca70e6987385d01f87e1",
+    "QREI submission\\results\\endpoint_v3\\joined_predictions.csv": "347b4d1e05411c3c4d38d4abfdd35e2903d7ed0a34c0f745b913645e61376c89",
+    "QREI submission\\results\\endpoint_v3\\model_summary.csv": "431011fbb30855f2ae9598b4ac97318ede528d008caa344dc9b6f7586626c36f",
+    "QREI submission\\results\\endpoint_v3\\per_bearing_metrics.csv": "b115d88cd92cb0a3c9a225c7cdccb1d5230afd98919eb8ceb2d4bb035c3f8b06",
+    "QREI submission\\results\\endpoint_v3\\rank_probabilities.csv": "2e0703bbfb812fd1e98f0c3e5dfdeabe63077223e85bce7450ec286b5dda7132",
+    "QREI submission\\results\\endpoint_v3\\maintenance_summary.csv": "60a7d5890da54e9e2145d9d7d8865af6cec280f705868cc2ec03f8da39d53d01",
     "QREI submission\\protocol.json": "d67169a8eaebcbad74c02c8c3f61b1ec4a207274ddc0e22e779525a259998e3b",
     "QREI submission\\protocol_endpoint_v3.json": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9",
     "QREI submission\\evidence\\endpoint_ledger.csv": "f4dda2984b7f06e2f2534aa6f6bbb81b3a72c75a92bd7ca5dc18bc5b0f44c83b"
   },
   "figure_generators": {
-    "check_references.py": "6842cb51cb6e0b4c265c402bc929d70ef0f22b01b7e788afb4ef07e17d465693",
-    "data_figures.py": "fe58c3191c8a3f3c9c6bc4abaaf1e56d434e562c5bf10615837d92c1e5de3ab1",
-    "diagrams.py": "a660aaf84c39b56bd310bc8a8daae8227090c1e14d4d6b8d5bec20cbf15ccc1c"
+    "check_references.py": "c191b5b8819ffa285dbe7488c5f0e52ecbb23bfa975f9f6f3290bce44e06e049",
+    "data_figures.py": "bfeb1fa68ef89ea77ff98db46696a7f724310fa0849ac77839e0759072f6152b",
+    "diagrams.py": "92617ce0f6db22654bd2565216fedb74975235de5c9280eb1913597ce3db12b7"
   },
   "figures": {
-    "accuracy.pdf": "dd53361bb771927cf6588fa4f0407ed41407299294cbcc18d2709c676fada712",
-    "all_forecasts.pdf": "4e4a252fa09c21de9e892e6a119d6b70f5ca5a9310569015790695d5a5d5e0cb",
-    "all_temperature_histories.pdf": "5921edaf29f30ec3d0c21be564613549209e8621a9246439db8a572229b06bc5",
-    "all_vibration_histories.pdf": "1624d5f9be5982526db8842bb506bd7874bcb34b6dbe1f54c895150194285c6c",
-    "architecture.pdf": "fabc4a312660b6723e89a295d1c49ae7678496ddbe3462c9d97d56113723b922",
-    "comparison.pdf": "d42258c67134761c92eae3d2112180f52a10b5cedfd46d05e83b8de0c92db12c",
-    "maintenance.pdf": "ee41a4ccc0ac133d1364649b7819b49b06042062c6f277593710f52d401913c0",
-    "sensors.pdf": "f10713d2312cd32342c941fbe8ae7ff83bde3e8e6c1cc4b83b12697cfa975945",
-    "signal_chain.pdf": "209dfd1660460b21e9921921136466ceb36c5b89ccd96400b534ef880f80573c",
-    "study_design.pdf": "4228e858fac6cc638a933e5c5194a03a33aa41ebe377cbb192fc68a00f43c464"
+    "accuracy.pdf": "8a596e4b0f34a7008791a7c651dfd1d47de468835ab4722a409e6cf9395e7ae3",
+    "all_forecasts.pdf": "c63f1b3da65188763ee134250e7e21389a81a275d935024d2d9fe397da4396b7",
+    "all_temperature_histories.pdf": "36aad60ecf78cf1fb8aeb672ec42fac6c9758efc53393782a4ca1f61a57c2950",
+    "all_vibration_histories.pdf": "1e269b373d41ede5b6f7ae322ffacfb253dbc234461db8d0d5f9bf1714215499",
+    "architecture.pdf": "0b820649e4a79da37e5c18321820048b522841aae21e4b6cbc848819de40ab21",
+    "comparison.pdf": "d465e389b5f3e1a5c836ebdc42e9c9ba8fbf7ae09b35fa6f3d12fe1eec163005",
+    "maintenance.pdf": "c6b547aff8595dced8ccaf20bbfba694979ea520db855e0ef646d6fa7be93749",
+    "sensors.pdf": "7cbac20b0b43659517168ec468bda5894080e5cffa8370bdd85a0b8693d1b4eb",
+    "signal_chain.pdf": "e3b87579fc2ae9ddb48c642d1fd0f9c9b36b03f55477f84865f0ca0745f34d7d",
+    "study_design.pdf": "0ddfcddfeb60450a5533579ada541d799046f38262ca0c9fd12b7c84ffb3fc76"
   },
-  "visual_inspection": "All main and supplementary pages rendered and inspected at 50-110 dpi; diagrams rendered at 200 dpi"
+  "visual_inspection": "All main and supplementary pages rendered and inspected; changed figures inspected at 150 dpi"
 }

@@ -140,6 +140,14 @@ def main():
     assert set(printed)==set(group_text)==set(counts)
     for group,count in printed.items(): check('features',group,'count',count,str(counts[group]),src)
     assert sum(counts.values())==104
+    src=ROOT/"evidence/operating_channel_check.csv";values={v['bearing_id']:v for v in read(src)}
+    rows=table('channels'); assert len(rows)==10
+    for row in rows:
+        v=values[row[0]]
+        expected=[format(float(v['median_measured_to_set_speed']),'.3f'),format(float(v['spectral_peak_near_set_speed']),'.2f'),
+                  format(float(v['spectral_peak_near_measured_speed']),'.2f'),str(int(v['static_load_above_set_max_by_500N'])),
+                  format(float(v['median_measured_to_set_dynamic_load']),'.2f')]
+        for j,(a,b) in enumerate(zip(row[1:],expected)): check('channels',row[0],j,a,b,src)
     OUT.mkdir(parents=True,exist_ok=True)
     with (OUT/'table_cells_checked.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=checks[0].keys());w.writeheader();w.writerows(checks)

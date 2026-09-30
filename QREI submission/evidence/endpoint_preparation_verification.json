@@ -84,7 +84,7 @@
     "ep_vibration_crossings_10"
   ],
   "test_stopping_cause_in_predictors": false,
-  "features_sha256": "0ac5cfd74a732acc71152cf79a89cad60dad5fa68943be7a8a8241b8a7ccad66",
+  "features_sha256": "a383ba8e6b6f67f02893f6d09bf585ddfed221560743c3d7f04f52767c9ce961",
   "protocol_sha256": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9",
   "original_processed_data_changed": false
 }

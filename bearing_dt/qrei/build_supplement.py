@@ -44,6 +44,17 @@ def main():
     results = root/"results/endpoint_v3"
     cfg = json.loads((root/"protocol_endpoint_v3.json").read_text())
     names = cfg["learned_models"]+cfg["controls"]
+    channels = pd.read_csv(root/"evidence/operating_channel_check.csv")
+    rows = [[v.bearing_id, f"{v.median_measured_to_set_speed:.3f}", f"{v.spectral_peak_near_set_speed:.2f}",
+             f"{v.spectral_peak_near_measured_speed:.2f}", int(v.static_load_above_set_max_by_500N),
+             f"{v.median_measured_to_set_dynamic_load:.2f}"] for _, v in channels.iterrows()]
+    table(out/"channels.tex", ["Test", "Speed ratio", "Peak at set speed", "Peak at measured speed",
+                               "Static load high", "Dynamic-load ratio"], rows, "@{}lrrrrr@{}",
+          "Measured operating channels against the set values. Speed ratio: median of measured over set speed. Peak at set "
+          "(measured) speed: share of acquisitions above 1,000 rpm whose strongest 3--80~Hz vibration line lies within "
+          "$\\pm\\max(1.25~\\mathrm{Hz},\\,3\\%)$ of the set (measured) shaft frequency. Static load high: acquisitions whose "
+          "measured static load exceeds the largest set value of the test by more than 500~N. Dynamic-load ratio: median of "
+          "the measured peak over the set amplitude.", "tab:channels", placement="htbp")
     seed = pd.read_csv(results/"comparison/latent_seed_summary.csv")
     rows = [[int(v.seed), "Yes" if v.primary else "No", f"{v.nMAE:.3f}", f"{v.late_MAE_hours:.3f}", f"{v.median_slope:.3f}",
              f"{v.coverage:.3f}", int(v['bearings_nMAE_le_0.20'])] for _, v in seed.iterrows()]

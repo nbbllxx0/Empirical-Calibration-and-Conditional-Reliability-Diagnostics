@@ -76,6 +76,8 @@ def build():
     top = rank.loc[rank.groupby("criterion").P_rank_1.idxmax()].set_index("criterion")
     other = rank[(rank.model != "representation") & (rank.criterion != "prognostic_horizon_fraction")]
     best_other = other.loc[other.P_rank_1.idxmax()]
+    vib_rank = pd.read_csv(ROOT/"results/primary/rank_probabilities.csv")
+    vib_top = vib_rank.loc[vib_rank.groupby("criterion").P_rank_1.idxmax()].set_index("criterion")
     vals = {
         "BestError": (s.loc["representation", "nMAE"], ".3f"),
         "OldError": (old.loc["representation", "nMAE"], ".3f"),
@@ -109,8 +111,25 @@ def build():
         "ErrorBthree": (rep.loc["B03", "nMAE"], ".3f"),
         "ErrorBtwelve": (rep.loc["B12", "nMAE"], ".3f"),
         "CoverageBten": (rep.loc["B10", "coverage"], ".3f"),
+        "CoverageBtwelve": (rep.loc["B12", "coverage"], ".3f"),
+        "MissCount": (8 - int(s.loc["representation", "bearings_nMAE_le_0.20"]), "d"),
+        "SeedTwoCount": (int(seeds.loc[seeds.seed == 20260930, "bearings_nMAE_le_0.20"].iloc[0]), "d"),
+        "SeedThreeCount": (int(seeds.loc[seeds.seed == 20260931, "bearings_nMAE_le_0.20"].iloc[0]), "d"),
+        "ContextError": (s.loc["context_only", "nMAE"], ".3f"),
+        "TemperatureContextError": (s.loc["temperature_only", "nMAE"], ".3f"),
+        "RidgeError": (s.loc["subspace_ridge", "nMAE"], ".3f"),
+        "RankTop": (rank.P_rank_1.max(), ".2f"),
+        "VibRankNorm": (vib_top.loc["nMAE", "P_rank_1"], ".2f"),
+        "VibRankAsym": (vib_top.loc["asymmetric_5", "P_rank_1"], ".2f"),
+        "VibRankHorizon": (vib_top.loc["prognostic_horizon_fraction", "P_rank_1"], ".2f"),
     }
-    assert best_other.model == "random_forest" and best_other.criterion == "alpha_lambda_accuracy", best_other
+    # The text names these winners of the vibration-only comparison (target R met there).
+    assert vib_top.loc[["nMAE", "asymmetric_5", "asymmetric_10"], "model"].eq("attention").all(), vib_top
+    assert vib_top.loc["prognostic_horizon_fraction", "model"] == "representation", vib_top
+    assert (vib_top.P_rank_1 >= .70).sum() == 4, vib_top
+    # The text states that no criterion gives a first-rank fraction of 0.70 or more.
+    assert rank.P_rank_1.max() < .70, rank.P_rank_1.max()
+    assert best_other.model == "attention" and best_other.criterion == "interval_score_hours", best_other  # named in the text
     ci = b[(b.model == "representation")&(b.metric == "nMAE")].iloc[0]
     vals.update({"BestErrorLow": (ci.CI_low, ".3f"), "BestErrorHigh": (ci.CI_high, ".3f")})
     macros = ["\\newcommand{\\"+k+"}{"+format(v, f).replace("-", "$-$")+"}" for k, (v, f) in vals.items()]

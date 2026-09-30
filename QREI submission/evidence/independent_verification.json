@@ -128,7 +128,7 @@
     }
   ],
   "persisted_models_reproduced": 40,
-  "max_absolute_hour_reproduction_error": 8.881784197001252e-15,
+  "max_absolute_hour_reproduction_error": 7.105427357601002e-15,
   "raw_spot_checks": [
     {
       "bearing": "B02",

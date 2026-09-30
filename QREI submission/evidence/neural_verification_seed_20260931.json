@@ -6,17 +6,17 @@
   "training_output_batch_size": 256,
   "device": "cuda",
   "torch": "2.11.0+cu128",
-  "max_hour_difference": 2.318746513790554e-05,
+  "max_hour_difference": 1.0473883400360743e-05,
   "checks": [
     {
       "bearing_id": "B02",
       "model": "representation",
       "role": "calibration",
       "records": 1114,
-      "max_scaled_difference": 2.980232238769531e-07,
-      "max_hour_difference": 3.1663311852349174e-06,
+      "max_scaled_difference": 3.5762786865234375e-07,
+      "max_hour_difference": 3.7995974222819012e-06,
       "status": "PASS",
-      "weights_sha256": "05cc1a0f222f4a3a5dae27a71a0d4ba7a7780b8b58b6ae13d7e1a32a751e20af"
+      "weights_sha256": "dee59e1db305779d4a908471b2eadb7270d5d4352b7cbffb9d1ba7055dc7e4e6"
     },
     {
       "bearing_id": "B02",
@@ -26,17 +26,17 @@
       "max_scaled_difference": 3.5762786865234375e-07,
       "max_hour_difference": 3.7995974222819012e-06,
       "status": "PASS",
-      "weights_sha256": "05cc1a0f222f4a3a5dae27a71a0d4ba7a7780b8b58b6ae13d7e1a32a751e20af"
+      "weights_sha256": "dee59e1db305779d4a908471b2eadb7270d5d4352b7cbffb9d1ba7055dc7e4e6"
     },
     {
       "bearing_id": "B03",
       "model": "representation",
       "role": "calibration",
       "records": 1827,
-      "max_scaled_difference": 4.76837158203125e-07,
-      "max_hour_difference": 4.215902752346462e-06,
+      "max_scaled_difference": 3.5762786865234375e-07,
+      "max_hour_difference": 3.161927064259847e-06,
       "status": "PASS",
-      "weights_sha256": "801d6a42008ad4544d50c853e89b8b532c342a0973f2d8a29128d3331d3ec4f1"
+      "weights_sha256": "76552c8419d841111dd63cacbdfa9c17347306d7ab48b4875e0886c4549d31cd"
     },
     {
       "bearing_id": "B03",
@@ -46,37 +46,37 @@
       "max_scaled_difference": 1.7881393432617188e-07,
       "max_hour_difference": 1.5809635321299235e-06,
       "status": "PASS",
-      "weights_sha256": "801d6a42008ad4544d50c853e89b8b532c342a0973f2d8a29128d3331d3ec4f1"
+      "weights_sha256": "76552c8419d841111dd63cacbdfa9c17347306d7ab48b4875e0886c4549d31cd"
     },
     {
       "bearing_id": "B04",
       "model": "representation",
       "role": "calibration",
       "records": 3224,
-      "max_scaled_difference": 3.5762786865234375e-07,
-      "max_hour_difference": 2.00877587000529e-06,
+      "max_scaled_difference": 4.76837158203125e-07,
+      "max_hour_difference": 2.6783678266737194e-06,
       "status": "PASS",
-      "weights_sha256": "f27c225462fae81109eb041f161f3543120175d4724797864daba519f64a18e3"
+      "weights_sha256": "ed4c0bed6d69b705391234ba4e7170f1f40d263d9acebe5ef45a9972b7f546f4"
     },
     {
       "bearing_id": "B04",
       "model": "representation",
       "role": "test",
       "records": 1114,
-      "max_scaled_difference": 2.384185791015625e-07,
-      "max_hour_difference": 1.3391839133368597e-06,
+      "max_scaled_difference": 3.5762786865234375e-07,
+      "max_hour_difference": 2.00877587000529e-06,
       "status": "PASS",
-      "weights_sha256": "f27c225462fae81109eb041f161f3543120175d4724797864daba519f64a18e3"
+      "weights_sha256": "ed4c0bed6d69b705391234ba4e7170f1f40d263d9acebe5ef45a9972b7f546f4"
     },
     {
       "bearing_id": "B08",
       "model": "representation",
       "role": "calibration",
       "records": 1953,
-      "max_scaled_difference": 1.1920928955078125e-07,
-      "max_hour_difference": 6.695919566684299e-07,
+      "max_scaled_difference": 1.7881393432617188e-07,
+      "max_hour_difference": 1.004387935002645e-06,
       "status": "PASS",
-      "weights_sha256": "75b4d48f4538fb343abd0a73a7f91d1a2ef86d257878aceea4ca585eab846d8a"
+      "weights_sha256": "70cf82e5faa0c27bab3ff4fc45cec8a206450af3e16a4dc0bab71fdc9b541b42"
     },
     {
       "bearing_id": "B08",
@@ -86,57 +86,57 @@
       "max_scaled_difference": 1.7881393432617188e-07,
       "max_hour_difference": 1.004387935002645e-06,
       "status": "PASS",
-      "weights_sha256": "75b4d48f4538fb343abd0a73a7f91d1a2ef86d257878aceea4ca585eab846d8a"
+      "weights_sha256": "70cf82e5faa0c27bab3ff4fc45cec8a206450af3e16a4dc0bab71fdc9b541b42"
     },
     {
       "bearing_id": "B10",
       "model": "representation",
       "role": "calibration",
       "records": 767,
-      "max_scaled_difference": 2.384185791015625e-07,
-      "max_hour_difference": 1.3582573996649847e-06,
+      "max_scaled_difference": 4.76837158203125e-07,
+      "max_hour_difference": 2.7165147993299695e-06,
       "status": "PASS",
-      "weights_sha256": "e191a4865cceab392ab8c5d748b12f8609e048455ca3342b93aa778635d7e695"
+      "weights_sha256": "d41caba6486a5e5f5e60189697c2117d14afa0f9be908ae07c532816d585998f"
     },
     {
       "bearing_id": "B10",
       "model": "representation",
       "role": "test",
       "records": 3224,
-      "max_scaled_difference": 3.5762786865234375e-07,
-      "max_hour_difference": 2.037386099497477e-06,
+      "max_scaled_difference": 4.76837158203125e-07,
+      "max_hour_difference": 2.7165147993299695e-06,
       "status": "PASS",
-      "weights_sha256": "e191a4865cceab392ab8c5d748b12f8609e048455ca3342b93aa778635d7e695"
+      "weights_sha256": "d41caba6486a5e5f5e60189697c2117d14afa0f9be908ae07c532816d585998f"
     },
     {
       "bearing_id": "B11",
       "model": "representation",
       "role": "calibration",
       "records": 2733,
-      "max_scaled_difference": 2.384185791015625e-06,
-      "max_hour_difference": 1.3582573996649847e-05,
+      "max_scaled_difference": 1.1920928955078125e-06,
+      "max_hour_difference": 6.791286998324924e-06,
       "status": "PASS",
-      "weights_sha256": "5702dc5b361ec37b1ca0f4518875a5abd97693e10276e7b25407204150d4f136"
+      "weights_sha256": "585b2e83a20c4b157e70b683faba7131352201c3e4cb549ebefdca45d82130ae"
     },
     {
       "bearing_id": "B11",
       "model": "representation",
       "role": "test",
       "records": 1953,
-      "max_scaled_difference": 4.76837158203125e-07,
-      "max_hour_difference": 2.7165147993299695e-06,
+      "max_scaled_difference": 5.960464477539062e-07,
+      "max_hour_difference": 3.395643499162462e-06,
       "status": "PASS",
-      "weights_sha256": "5702dc5b361ec37b1ca0f4518875a5abd97693e10276e7b25407204150d4f136"
+      "weights_sha256": "585b2e83a20c4b157e70b683faba7131352201c3e4cb549ebefdca45d82130ae"
     },
     {
       "bearing_id": "B12",
       "model": "representation",
       "role": "calibration",
       "records": 1116,
-      "max_scaled_difference": 4.76837158203125e-07,
-      "max_hour_difference": 4.215902752346462e-06,
+      "max_scaled_difference": 1.1920928955078125e-07,
+      "max_hour_difference": 1.0539756880866156e-06,
       "status": "PASS",
-      "weights_sha256": "5a63c98a8714ae23b88efaac4120b603733595f0552c957ced9db4eabc218ddc"
+      "weights_sha256": "5c83fbd49275754c8dbbeab94c4e12e18211bce83ded0d41d91d62649accae52"
     },
     {
       "bearing_id": "B12",
@@ -146,7 +146,7 @@
       "max_scaled_difference": 2.384185791015625e-07,
       "max_hour_difference": 2.107951376173231e-06,
       "status": "PASS",
-      "weights_sha256": "5a63c98a8714ae23b88efaac4120b603733595f0552c957ced9db4eabc218ddc"
+      "weights_sha256": "5c83fbd49275754c8dbbeab94c4e12e18211bce83ded0d41d91d62649accae52"
     },
     {
       "bearing_id": "B17",
@@ -156,17 +156,17 @@
       "max_scaled_difference": 1.7881393432617188e-07,
       "max_hour_difference": 1.5809635321299235e-06,
       "status": "PASS",
-      "weights_sha256": "87020fcda2af14b1077b0fa605bf4b50e7a519e231a33cbd72c2c7ee85ecd9da"
+      "weights_sha256": "2e3e958ad5400ce4501fd795ae589dfe010e090e20bd3f4c9e337e1a2fc4c857"
     },
     {
       "bearing_id": "B17",
       "model": "representation",
       "role": "test",
       "records": 2733,
-      "max_scaled_difference": 2.6226043701171875e-06,
-      "max_hour_difference": 2.318746513790554e-05,
+      "max_scaled_difference": 1.1846423149108887e-06,
+      "max_hour_difference": 1.0473883400360743e-05,
       "status": "PASS",
-      "weights_sha256": "87020fcda2af14b1077b0fa605bf4b50e7a519e231a33cbd72c2c7ee85ecd9da"
+      "weights_sha256": "2e3e958ad5400ce4501fd795ae589dfe010e090e20bd3f4c9e337e1a2fc4c857"
     }
   ],
   "status": "PASS"

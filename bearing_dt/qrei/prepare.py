@@ -13,7 +13,23 @@ import numpy as np
 import pandas as pd
 from scipy.io import loadmat
 
+from scipy import signal as sps
+
 from .signal import harmonize_record, physical_features, causal_history, defect_orders
+
+# Operating-condition columns of <test>_operatingConditions.csv. The context uses the set values: the measured
+# channels contain faults in several tests (evidence/operating_channel_check.csv), and the set speed agrees with the
+# shaft frequency seen in the vibration spectrum.
+SET_COLUMNS = {"static_load_N": "setStatLoad / N", "dynamic_load_N": "setDynLoad / N", "speed_rpm": "setSpeed / rpm"}
+MEASURED_COLUMNS = {"measured_static_load_N": "meanAbs_statLoad / N", "measured_dynamic_load_N": "peak_dynLoad / N",
+                    "measured_speed_rpm": "meanAbs_speed / rpm"}
+
+
+def spectral_peak_hz(x: np.ndarray, fs: float = 64000) -> float:
+    """Frequency of the strongest 3-80 Hz line of the mean channel spectrum (a check on shaft speed, not a feature)."""
+    f, p = sps.periodogram(x, fs=fs, window="hann", axis=1)
+    band = (f >= 3) & (f <= 80)
+    return float(f[band][np.argmax(p[:, band].mean(axis=0))])
 
 
 def process_one(task):
@@ -21,14 +37,35 @@ def process_one(task):
     x, fs = harmonize_record(loadmat(path, variable_names=["measTime", "accHorizRear_A", "accHorizFrontal_C"]), factor)
     feat, wave = physical_features(x, speed)
     feat["raw_sample_rate_Hz"] = fs
+    feat["spectral_peak_3_80_Hz"] = spectral_peak_hz(x)
     return feat, wave
+
+
+def channel_check(b: str, op: pd.DataFrame, peaks: np.ndarray) -> dict:
+    """Compare the measured operating channels with the set values and the vibration spectrum of one test."""
+    set_speed, meas_speed = op["setSpeed / rpm"].to_numpy(), op["meanAbs_speed / rpm"].to_numpy()
+    set_stat, meas_stat = op["setStatLoad / N"].to_numpy(), op["meanAbs_statLoad / N"].to_numpy()
+    set_dyn, meas_dyn = op["setDynLoad / N"].to_numpy(), op["peak_dynLoad / N"].to_numpy()
+    running = set_speed >= 1000
+
+    def near(rpm):
+        hz = rpm[running]/60
+        return float(np.mean(np.abs(peaks[running]-hz) <= np.maximum(1.25, .03*hz)))
+    loaded = set_dyn > 100
+    return {"bearing_id": b, "acquisitions": len(op), "running_acquisitions": int(running.sum()),
+            "median_measured_to_set_speed": float(np.median(meas_speed[set_speed > 100]/set_speed[set_speed > 100])),
+            "speed_differs_over_2pct": int(np.sum((np.abs(meas_speed-set_speed) > .02*set_speed) & (set_speed > 100))),
+            "spectral_peak_near_set_speed": near(set_speed), "spectral_peak_near_measured_speed": near(meas_speed),
+            "median_measured_to_set_static_load": float(np.median(meas_stat/set_stat)),
+            "static_load_above_set_max_by_500N": int(np.sum(meas_stat > set_stat.max()+500)),
+            "median_measured_to_set_dynamic_load": float(np.median(meas_dyn[loaded]/set_dyn[loaded])) if loaded.any() else np.nan}
 
 
 def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int = 6):
     cfg = json.loads(protocol.read_text(encoding="utf-8"))
     out.mkdir(parents=True, exist_ok=True)
     evidence.mkdir(parents=True, exist_ok=True)
-    allframes, ledger, calibration = [], [], []
+    allframes, ledger, calibration, channels = [], [], [], []
     t0 = time.time()
     total = sum(len(list((raw/b/b/"vibrationData").glob("*.mat"))) for b in cfg["raw_bearings"])
     signals = np.lib.format.open_memmap(out/"signals.npy", mode="w+", dtype=np.float32, shape=(total, 2, 2048))
@@ -41,6 +78,9 @@ def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int =
         paths = sorted((folder/"vibrationData").glob("*.mat"), key=lambda p:int(re.search(r"_M(\d+)",p.stem)[1]))
         ids = [int(re.search(r"_M(\d+)",p.stem)[1]) for p in paths]
         op = pd.read_csv(folder/f"{b}_operatingConditions.csv")
+        missing = set(SET_COLUMNS.values()) | set(MEASURED_COLUMNS.values())
+        if not missing <= set(op.columns):
+            raise ValueError(f"{b}: operating-condition columns missing: {sorted(missing-set(op.columns))}")
         temp = pd.read_csv(folder/f"{b}_meanTemperatures.csv")
         if not len(paths)==len(op)==len(temp) or ids!=list(range(1,len(paths)+1)):
             raise ValueError(f"{b}: count/index alignment failed")
@@ -55,7 +95,7 @@ def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int =
             raise ValueError(f"{b}: conversion not supported by log")
         calibration.append({"bearing_id":b,"g_per_V":10.0,"gain_dB":0,"source":str(folder/f"{b}_log.pdf")})
         data=[]
-        tasks=((p,float(op.iloc[i,6]),10.0) for i,p in enumerate(paths))
+        tasks=((p,float(op[SET_COLUMNS["speed_rpm"]].iloc[i]),10.0) for i,p in enumerate(paths))
         with ThreadPoolExecutor(max_workers=workers) as pool:
             for i,(feat,wave) in enumerate(pool.map(process_one,tasks)):
                 signals[offset+i]=wave
@@ -63,9 +103,8 @@ def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int =
                              "timestamp":stamps.iloc[i].isoformat(),"elapsed_hours":hours[i],
                              "observed_duration_hours":hours[-1],"event_observed":b in cfg["event_bearings"],
                              "rul_hours":hours[-1]-hours[i] if b in cfg["event_bearings"] else np.nan,
-                             "static_load_N":float(op.iloc[i,4]),"dynamic_load_N":float(op.iloc[i,2]),
-                             "speed_rpm":float(op.iloc[i,6]),"temperature_1_C":float(temp.iloc[i,1]),
-                             "temperature_2_C":float(temp.iloc[i,2])})
+                             "temperature_1_C":float(temp.iloc[i,1]),"temperature_2_C":float(temp.iloc[i,2])})
+                feat.update({k:float(op[c].iloc[i]) for k,c in {**SET_COLUMNS, **MEASURED_COLUMNS}.items()})
                 data.append(feat)
                 if (i+1)%500==0:
                     print(f"{b}: {i+1}/{len(paths)} records; {time.time()-t0:.1f} s",flush=True)
@@ -87,6 +126,7 @@ def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int =
                        "postmortem_defect":defects[b],"median_gap_seconds":float(np.median(gaps)),
                        "max_gap_seconds":float(max(gaps)),"raw_fs_Hz":float(frame.raw_sample_rate_Hz.iloc[0]),
                        "index_timestamp_alignment":"PASS","endpoint":"final acquisition of documented completed test" if b in cfg["event_bearings"] else "diagnostic only; no failure target"})
+        channels.append(channel_check(b, op, frame.spectral_peak_3_80_Hz.to_numpy()))
         allframes.append(frame)
         frame.to_csv(out/f"{b}_features.csv",index=False)
         offset+=len(frame)
@@ -96,11 +136,15 @@ def prepare(raw: Path, out: Path, protocol: Path, evidence: Path, workers: int =
     frame.to_csv(out/"features.csv",index=False)
     pd.DataFrame(ledger).to_csv(evidence/"endpoint_ledger.csv",index=False)
     pd.DataFrame(calibration).to_csv(evidence/"sensor_calibration.csv",index=False)
+    pd.DataFrame(channels).to_csv(evidence/"operating_channel_check.csv",index=False)
     feature_cols=[c for c in frame if c.startswith(("A_","C_")) or c in ("elapsed_hours","hi_rms_g","hi_log_slope_per_hour")]
     manifest={"created":datetime.now().isoformat(),"record_count":len(frame),"supervised_records":int(frame.event_observed.sum()),
               "signal_shape":list(signals.shape),"channels":["A","C"],"sample_duration_seconds":1.6,
               "analysis_fs_Hz":64000,"waveform_fs_Hz":1280,"envelope_band_Hz":[6000,10000],
               "feature_columns":feature_cols,"context_columns":["static_load_N","dynamic_load_N","speed_rpm"],
+              "context_source":{"values":"set values of the controller","columns":SET_COLUMNS,
+                                "measured_columns_kept_for_reference":MEASURED_COLUMNS,
+                                "check":"evidence/operating_channel_check.csv"},
               "temperature_primary":False,"defect_orders":defect_orders(),
               "protocol_sha256":hashlib.sha256(protocol.read_bytes()).hexdigest(),
               "runtime_seconds":time.time()-t0,"source":str(raw.resolve())}

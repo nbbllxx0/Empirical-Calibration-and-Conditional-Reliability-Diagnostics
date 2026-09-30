@@ -55,9 +55,10 @@ def main():
     choices=[]
     for i,b in enumerate(("B02","B10")):
         g=features[features.bearing_id==b]
-        # Use the existing 1,800 rpm regime cut point to exclude idle records.
-        # At near-zero rotation the plotted order interval may contain no FFT bin.
-        running=g[g.speed_rpm>=1800]
+        # Use the existing 1,800 rpm regime cut point and require the strongest 3-80 Hz vibration line at the set
+        # shaft frequency; this excludes idle records, including two B10 records taken while the shaft stood still.
+        shaft_hz=g.speed_rpm/60
+        running=g[(g.speed_rpm>=1800)&(np.abs(g.spectral_peak_3_80_Hz-shaft_hz)<=np.maximum(1.25,.03*shaft_hz))]
         assert len(running),b
         early=running.iloc[np.argmin(np.abs(running.elapsed_hours.to_numpy()-.25))]
         late=g.iloc[-2]
