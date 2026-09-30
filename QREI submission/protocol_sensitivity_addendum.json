@@ -1,0 +1,35 @@
+{
+  "frozen_date": "2026-09-30 America/Los_Angeles",
+  "version": "sensitivity addendum to endpoint-aware follow-up v3",
+  "registered_after": "Primary endpoint-aware and vibration-only results, two internal reviews of the manuscript (2026-09-30) and the author's instruction to resolve all review items; recorded before any run listed below",
+  "base_protocol": "QREI submission/protocol_endpoint_v3.json",
+  "primary_unchanged": "Primary folds, seed 20260929, models, targets A1-A3 and R, and all primary numbers stay as reported. Every analysis below is secondary and is reported whatever it shows. No result below replaces a primary value or selects a new primary seed, allocation or case set.",
+  "seed_sensitivity": {
+    "inputs": "endpoint-aware",
+    "seeds": [20260930, 20260931],
+    "refit": ["random_forest", "standard_boosting", "custom_boosting", "subspace_ridge", "tcn", "attention"],
+    "reused": {"representation": "results/endpoint_seed_<seed> (listed before fitting in v3)", "competing_stop": "deterministic; primary fit reused"},
+    "report": "For each of the three seeds, all eight learned predictors fitted with that seed; first-rank fractions per criterion with the primary 10,000 bearing draws; the largest fraction and its model per criterion."
+  },
+  "role_allocation_sensitivity": {
+    "inputs": "endpoint-aware",
+    "seed": 20260929,
+    "allocations": {
+      "swap": "validation = bearing two places after the test bearing, calibration = the next bearing; the fitting bearings are those of the primary design",
+      "reverse": "validation = previous bearing, calibration = the bearing before it, in sorted circular order; the fitting bearings change"
+    },
+    "models": "all eight learned predictors and six reference controls",
+    "report": "Mean normalized error, bearings at or below 0.20, late-life error, per-bearing coverage and interval half-width, first-rank fractions, and the one-hour first-trigger rule against always acting, for every method reported in the maintenance analysis."
+  },
+  "saved_result_diagnostics": [
+    "First-rank fractions among the seven families common to both input sets, for both input sets",
+    "Support of every nonzero prognostic horizon (records, residual time)",
+    "Delete-one-bearing first-rank fractions (fixed fits)",
+    "Paired late-life error differences between the latent-state network and each reference control; paired latent-state minus attention normalized error",
+    "Conditional mean and median residual life of the fitting lifetimes as a population control",
+    "Error over the last 40% of each observed life (exploratory, not prespecified before the primary results)",
+    "Calendar gaps longer than 5 min per test",
+    "One-hour first-trigger timing: acquisitions at which the lower bound triggers at the first record"
+  ],
+  "bootstrap": "10,000 whole-bearing draws with the primary generator seed 20260929 and fractional tie credit, as in summarize.py"
+}

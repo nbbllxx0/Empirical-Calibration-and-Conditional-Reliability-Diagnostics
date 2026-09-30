@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-30 — secondary analyses: seeds, fold roles and ranking diagnostics
+
+- `QREI submission/protocol_sensitivity_addendum.json` records the analyses below before they were run. Primary folds,
+  seed, models, targets and results are unchanged.
+- `bearing_dt/qrei/roles.py` holds the fold-role allocation; `evaluate.py --roles swap|reverse` gives the two
+  alternative allocations (the primary `forward` allocation is the default). `tests/test_qrei_roles.py` checks that
+  roles stay disjoint and that the primary roles are unchanged.
+- `bearing_dt/qrei/sensitivity_runs.py` refits random forest, gradient boosting, boosted stumps, random-subspace ridge,
+  temporal convolutional and attention networks with seeds 20260930 and 20260931, and all 14 methods under both
+  alternative allocations. Forecasts: `QREI submission/results/sensitivity/*/joined_predictions.csv.gz`; the two extra
+  latent-state seeds: `results/endpoint_seed_*/joined_predictions.csv.gz`.
+- `bearing_dt/qrei/sensitivity.py` writes `results/endpoint_v3/sensitivity/`: first-rank fractions among the seven
+  families common to both input sets (latent-state network 0.707 by hour error with the endpoint histories), per seed,
+  per allocation and with each bearing deleted; the support of the only nonzero prognostic horizon (one B12
+  acquisition, 12 s before the end); paired late-life differences (latent-state minus median-life clock −2.62 h,
+  95% interval −3.95 to −1.30); conditional mean and median residual life of the fitting lifetimes; an exploratory
+  life-phase split; calendar gaps.
+- `build_revision.py`, `build_supplement.py`, `audit_tables.py` and `data_figures.py` produce and check the new
+  macros, tables and figures (main Figure 6b; Supplementary Figure S3 and Tables S10–S14).
+
 ## 2026-09-30 — operating context from the set values; all models refitted
 
 - The archive's measured operating channels are faulty in five tests: B04 measured speed is 0.498-0.500 times the set

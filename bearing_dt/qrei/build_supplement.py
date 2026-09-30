@@ -37,6 +37,87 @@ GROUP_TEXT = {
 }
 
 
+SCENARIO_LABELS = {
+    "vibration_common7": "Vibration only, seven families",
+    "endpoint_common7": "Endpoint-aware, same seven families",
+    "endpoint_all8": "Endpoint-aware, eight predictors (primary)",
+    "endpoint_all8_seed_20260930": "All predictors refitted, seed 20260930",
+    "endpoint_all8_seed_20260931": "All predictors refitted, seed 20260931",
+    "endpoint_all8_roles_swap": "Validation and calibration swapped",
+    "endpoint_all8_roles_reverse": "Fold roles reversed",
+}
+ALLOCATION_LABELS = {"forward": "Primary", "swap": "Swapped", "reverse": "Reversed"}
+
+
+def sensitivity_tables(root, out, cfg):
+    """Tables for the registered secondary analyses (protocol_sensitivity_addendum.json)."""
+    from .build_revision import CRITERION_LABELS
+    sens = root/"results/endpoint_v3/sensitivity"
+    top = pd.read_csv(sens/"rank_scenarios_top.csv")
+    rows = []
+    scenarios = list(SCENARIO_LABELS) + [f"endpoint_all8_without_{b}" for b in cfg["event_bearings"]]
+    for sc in scenarios:
+        g = top[top.scenario == sc]
+        v = g.loc[g.first_rank_fraction.idxmax()]
+        stable = g[g.first_rank_fraction >= .70]
+        label = SCENARIO_LABELS.get(sc, "Primary fits without " + sc.rsplit("_", 1)[1])
+        groups = []
+        for model, h in stable.groupby("model", sort=False):
+            groups.append(esc(NAMES[model]) + ": " + "; ".join(CRITERION_LABELS[c].lower() for c in h.criterion))
+        rows.append([label, f"{v.first_rank_fraction:.3f} ({esc(NAMES[v.model])})", ". ".join(groups) or "None"])
+    table(out/"rankscenarios.tex", ["Comparison", "Largest fraction (model)", r"Criteria with a fraction $\ge 0.70$, by model"],
+          rows, r"@{}>{\raggedright\arraybackslash}p{42mm}>{\raggedright\arraybackslash}p{40mm}>{\raggedright\arraybackslash}p{68mm}@{}",
+          "Largest first-rank fraction in each comparison, over the nine criteria, and every criterion whose leading "
+          "fraction reaches the 0.70 threshold of target R. Rows below the refits hold the primary fits fixed and "
+          "delete one scored bearing. All rows use the same bootstrap generator and fractional tie credit.",
+          "tab:rankscenarios", placement="htbp", size=r"\footnotesize")
+    roles = pd.read_csv(sens/"roles_model_summary.csv").set_index(["scenario", "model"])
+    maint = pd.read_csv(sens/"roles_maintenance_one_hour.csv").set_index(["scenario", "model", "policy"])
+    radii = pd.read_csv(sens/"roles_half_widths.csv")
+    cols = {}
+    for sc in ALLOCATION_LABELS:
+        v = roles.loc[(sc, "representation")]
+        lb = maint.loc[(sc, "representation", "lower_bound")]
+        always = maint.loc[(sc, "always_action", "control")]
+        rad = radii[(radii.scenario == sc) & (radii.model == "representation")].half_width_hours
+        cols[sc] = [f"{v.nMAE:.3f}", f"{roles.loc[(sc, 'attention'), 'nMAE']:.3f}", int(v["bearings_nMAE_le_0.20"]),
+                    f"{v.late_MAE_hours:.2f}", f"{roles.loc[(sc, 'time_only'), 'late_MAE_hours']:.2f}", f"{v.coverage:.3f}",
+                    f"{v.worst_coverage:.3f}", f"{rad.min():.1f} to {rad.max():.1f}", f"{lb.unused_life_fraction:.3f}",
+                    int(round(lb.too_late*8)), f"{always.unused_life_fraction:.3f}"]
+    labels = ["Normalized error", "Normalized error, attention network", r"Bearings with error $\le 0.20$",
+              "Late-life error (h)", "Late-life error, median-life clock (h)", "Mean coverage", "Lowest bearing coverage",
+              "Interval half-width over folds (h)", "Unused life, lower-bound trigger",
+              "Late or missed actions, lower-bound trigger", "Unused life, acting at the first record"]
+    rows = [[label] + [cols[sc][i] for sc in ALLOCATION_LABELS] for i, label in enumerate(labels)]
+    table(out/"allocations.tex", ["Quantity"] + list(ALLOCATION_LABELS.values()), rows, "@{}lrrr@{}",
+          "Latent-state network under three fold-role allocations, all methods refitted. The maintenance rows use a "
+          "one-hour lead time; unused life is the mean fraction of the observed life, and late or missed actions are "
+          "counted over the eight bearings.", "tab:allocations", placement="htbp", size=r"\footnotesize")
+    seeds = pd.read_csv(sens/"seed_model_summary.csv")
+    piv = seeds.pivot(index="model", columns="seed", values="nMAE").reindex(cfg["learned_models"])
+    cnt = seeds.pivot(index="model", columns="seed", values="bearings_nMAE_le_0.20").reindex(cfg["learned_models"])
+    rows = [[esc(NAMES[m])] + [f"{piv.loc[m, c]:.3f} ({int(cnt.loc[m, c])})" for c in piv.columns] for m in piv.index]
+    table(out/"allseeds.tex", ["Method"] + [str(c) + (" (primary)" if c == cfg["seeds"][0] else "") for c in piv.columns],
+          rows, "@{}lrrr@{}",
+          "Mean normalized error of every learned predictor with the three seeds listed before fitting; the number of "
+          "bearings at or below 0.20 is in parentheses. The competing-stop Weibull model is deterministic, so its three "
+          "entries coincide.", "tab:allseeds", placement="htbp", size=r"\footnotesize")
+    pop = pd.read_csv(sens/"population_controls_per_bearing.csv").groupby("control")[["nMAE", "late_MAE_hours"]].mean()
+    phase = pd.read_csv(sens/"phase_split_per_bearing.csv").groupby("model")[["early_error_over_life", "final40_error_over_life"]].mean()
+    main_models = cfg["learned_models"] + cfg["controls"]
+    rows = [[esc(NAMES[m]), f"{phase.loc[m, 'early_error_over_life']:.3f}", f"{phase.loc[m, 'final40_error_over_life']:.3f}"]
+            for m in main_models]
+    table(out/"phase.tex", ["Method", "First 60\\% of life", "Last 40\\% of life"], rows, "@{}lrr@{}",
+          "Exploratory split of the error by life phase, not specified before the primary results: mean absolute error over "
+          "the acquisitions in each phase, divided by the observed life, averaged over the eight bearings.",
+          "tab:phase", placement="htbp", size=r"\footnotesize")
+    rows = [[k[0].upper() + k[1:], f"{v.nMAE:.3f}", f"{v.late_MAE_hours:.2f}"] for k, v in pop.iterrows()]
+    table(out/"population.tex", ["Population control", "Norm.\\ error", "Late (h)"], rows, "@{}lrr@{}",
+          "Conditional mean and median residual life of the five fitting lifetimes of each fold, used as forecasts. Both "
+          "are less accurate than the median-life clock of Table~\\ref{M-tab:results}.", "tab:population",
+          placement="htbp", size=r"\footnotesize")
+
+
 def main():
     root = Path("QREI submission")
     paper = root/"manuscript"
@@ -130,6 +211,7 @@ def main():
           "Composition of the 104-value engineered input of the endpoint-aware comparison. The vibration-only comparison "
           "omits the 19 temperature and vibration-threshold history values. Operating context (static load, dynamic load, "
           "shaft speed) is supplied separately.", "tab:features", placement="htbp", size=r"\small")
+    sensitivity_tables(root, out, cfg)
     print(f"Generated supplement tables: {len(per)} method/bearing rows, {len(manifest['feature_columns'])} features in "
           f"{len(counts)} groups, {len(seed)} seeds.", flush=True)
 

@@ -148,6 +148,47 @@ def main():
                   format(float(v['spectral_peak_near_measured_speed']),'.2f'),str(int(v['static_load_above_set_max_by_500N'])),
                   format(float(v['median_measured_to_set_dynamic_load']),'.2f')]
         for j,(a,b) in enumerate(zip(row[1:],expected)): check('channels',row[0],j,a,b,src)
+    # Secondary analyses (protocol_sensitivity_addendum.json): recompute from per-bearing rows where possible.
+    sens=result/'sensitivity'
+    src=sens/'seed_model_summary.csv';values={(v['model'],v['seed']):v for v in read(src)}
+    rows=table('allseeds'); assert len(rows)==8
+    seeds=[str(s) for s in cfg['seeds']]
+    for row in rows:
+        model=next(k for k,v in names.items() if v==row[0])
+        for j,seed in enumerate(seeds,1):
+            v=values[(model,seed)]
+            check('allseeds',row[0],seed,row[j],f"{float(v['nMAE']):.3f} ({int(v['bearings_nMAE_le_0.20'])})",src)
+    per={'Primary':[v for v in read(result/'per_bearing_metrics.csv')],
+         'Swapped':read(sens/'roles_swap_per_bearing.csv'),'Reversed':read(sens/'roles_reverse_per_bearing.csv')}
+    rows=table('allocations'); assert len(rows)==11
+    for j,label in enumerate(('Primary','Swapped','Reversed'),1):
+        rep=[float(v['nMAE']) for v in per[label] if v['model']=='representation']
+        att=[float(v['nMAE']) for v in per[label] if v['model']=='attention']
+        assert len(rep)==len(att)==8
+        check('allocations','latent nMAE',label,rows[0][j],f"{sum(rep)/8:.3f}",'per-bearing rows')
+        check('allocations','attention nMAE',label,rows[1][j],f"{sum(att)/8:.3f}",'per-bearing rows')
+        check('allocations','bearings <= 0.20',label,rows[2][j],str(sum(x<=.2 for x in rep)),'per-bearing rows')
+    src=sens/'phase_split_per_bearing.csv';vals={}
+    for v in read(src): vals.setdefault(v['model'],[]).append(v)
+    for row in table('phase'):
+        g=vals[next(k for k,v in names.items() if v==row[0])]; assert len(g)==8
+        for j,key in enumerate(('early_error_over_life','final40_error_over_life'),1):
+            check('phase',row[0],key,row[j],f"{sum(float(v[key]) for v in g)/8:.3f}",src)
+    src=sens/'population_controls_per_bearing.csv';vals={}
+    for v in read(src): vals.setdefault(v['control'],[]).append(v)
+    for row in table('population'):
+        g=vals[row[0][0].lower()+row[0][1:]]; assert len(g)==8
+        check('population',row[0],'nMAE',row[1],f"{sum(float(v['nMAE']) for v in g)/8:.3f}",src)
+        check('population',row[0],'late',row[2],f"{sum(float(v['late_MAE_hours']) for v in g)/8:.2f}",src)
+    src=sens/'rank_scenarios.csv';best={}
+    for v in read(src):
+        if v['scenario'] not in best or float(v['first_rank_fraction'])>float(best[v['scenario']]['first_rank_fraction']): best[v['scenario']]=v
+    labels=literal("bearing_dt/qrei/build_supplement.py","SCENARIO_LABELS")
+    rows=table('rankscenarios'); assert len(rows)==15
+    for row in rows:
+        key=next((k for k,l in labels.items() if l==row[0]),None) or 'endpoint_all8_without_'+row[0].rsplit(' ',1)[1]
+        v=best[key]
+        check('rankscenarios',row[0],'largest',row[1],f"{float(v['first_rank_fraction']):.3f} ({names[v['model']]})",src)
     OUT.mkdir(parents=True,exist_ok=True)
     with (OUT/'table_cells_checked.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=checks[0].keys());w.writeheader();w.writerows(checks)

@@ -250,15 +250,53 @@ CRITERIA = [("MAE_hours", "Error (h)"), ("nMAE", "Normalized error"), ("asymmetr
             ("normalized_interval_score", "Normalized interval score"), ("prognostic_horizon_fraction", "Prognostic horizon")]
 
 
+SCENARIOS = [("vibration_common7", "Vibration only, seven families"),
+             ("endpoint_common7", "Endpoint-aware, same seven families"),
+             ("endpoint_all8", "Endpoint-aware, eight predictors (primary)"),
+             ("endpoint_all8_seed_20260930", "   all refitted with seed 20260930"),
+             ("endpoint_all8_seed_20260931", "   all refitted with seed 20260931"),
+             ("endpoint_all8_roles_swap", "   validation and calibration swapped"),
+             ("endpoint_all8_roles_reverse", "   fold roles reversed"),
+             ("delete_one", "   largest after deleting one bearing")]
+SHORT = {"representation": "LS", "random_forest": "RF", "standard_boosting": "GB", "custom_boosting": "BS", "tcn": "TC",
+         "attention": "AT", "subspace_ridge": "RR", "competing_stop": "CW"}
+
+
+def scenario_tops() -> pd.DataFrame:
+    """Largest first-rank fraction per criterion in each registered comparison (sensitivity/rank_scenarios_top.csv)."""
+    top = pd.read_csv(RESULTS / "sensitivity/rank_scenarios_top.csv")
+    deleted = top[top.scenario.str.startswith("endpoint_all8_without_")]
+    best = deleted.loc[deleted.groupby("criterion").first_rank_fraction.idxmax()].assign(scenario="delete_one")
+    return pd.concat([top[~top.scenario.str.startswith("endpoint_all8_without_")], best], ignore_index=True)
+
+
+def rank_heatmap(ax, data, texts, rows, cols, bold_at=0.7):
+    im = ax.pcolormesh(np.arange(data.shape[1] + 1) - 0.5, np.arange(data.shape[0] + 1) - 0.5, data, cmap="Blues",
+                       vmin=0, vmax=1, edgecolors="white", linewidth=1.0)
+    ax.set_xlim(-0.5, data.shape[1] - 0.5)
+    ax.set_ylim(data.shape[0] - 0.5, -0.5)
+    ax.set_xticks(range(data.shape[1]), cols, rotation=30, ha="left", rotation_mode="anchor")
+    ax.xaxis.tick_top()
+    ax.set_yticks(range(data.shape[0]), rows)
+    ax.tick_params(length=0)
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+    for i in range(data.shape[0]):
+        for j in range(data.shape[1]):
+            v = data[i, j]
+            ax.text(j, i, texts[i][j], ha="center", va="center", fontsize=5.9, linespacing=1.05,
+                    color="white" if v > 0.55 else INK, fontweight="bold" if v >= bold_at else "normal")
+    return im
+
+
 def figure_comparison(learned) -> None:
     pair = pd.read_csv(RESULTS / "comparison/paired_model_changes.csv").set_index("model")
     pair = pair.loc[[m for m in learned if m != "competing_stop"]]
-    rank = pd.read_csv(RESULTS / "rank_probabilities.csv")
     keys = [c for c, _ in CRITERIA]
-    assert set(rank.criterion) == set(keys), sorted(set(rank.criterion) ^ set(keys))
-    pivot = rank.pivot(index="model", columns="criterion", values="P_rank_1").reindex(index=learned, columns=keys)
-    fig = plt.figure(figsize=(WIDTH, 4.7), layout="constrained")
-    top, bottom = fig.subfigures(2, 1, height_ratios=[0.8, 1.3], hspace=0.03)
+    top_all = scenario_tops()
+    assert set(top_all.scenario) == {k for k, _ in SCENARIOS}, sorted(set(top_all.scenario))
+    fig = plt.figure(figsize=(WIDTH, 4.9), layout="constrained")
+    top, bottom = fig.subfigures(2, 1, height_ratios=[0.72, 1.4], hspace=0.03)
     ax = top.subplots()
     ax.axvspan(-0.2, 0, color=TEAL, alpha=0.07, lw=0)
     ax.axvline(0, color=INK, lw=0.6)
@@ -278,29 +316,39 @@ def figure_comparison(learned) -> None:
             fontsize=6.3, color=MUTED, fontweight="bold")
     letter(top, "a")
     ax = bottom.subplots()
-    data = pivot.to_numpy()
-    im = ax.pcolormesh(np.arange(data.shape[1] + 1) - 0.5, np.arange(data.shape[0] + 1) - 0.5, data, cmap="Blues",
-                       vmin=0, vmax=1, edgecolors="white", linewidth=1.0)
-    ax.set_xlim(-0.5, data.shape[1] - 0.5)
-    ax.set_ylim(data.shape[0] - 0.5, -0.5)
-    labels = dict(CRITERIA)
-    ax.set_xticks(range(data.shape[1]), [labels[c] for c in keys], rotation=30, ha="left", rotation_mode="anchor")
-    ax.xaxis.tick_top()
-    ax.set_yticks(range(data.shape[0]), [NAMES[m] for m in pivot.index])
-    ax.tick_params(length=0)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    for i in range(data.shape[0]):
-        for j in range(data.shape[1]):
-            v = data[i, j]
-            ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=6.2,
-                    color="white" if v > 0.55 else INK, fontweight="bold" if v >= 0.7 else "normal")
+    data = np.full((len(SCENARIOS), len(keys)), np.nan)
+    texts = [["" for _ in keys] for _ in SCENARIOS]
+    for i, (sc, _) in enumerate(SCENARIOS):
+        g = top_all[top_all.scenario == sc].set_index("criterion")
+        for j, c in enumerate(keys):
+            v = g.loc[c]
+            data[i, j] = v.first_rank_fraction
+            tied = c == "prognostic_horizon_fraction" and v.first_rank_fraction < 0.2
+            texts[i][j] = "all tie" if tied else f"{v.first_rank_fraction:.2f}\n{SHORT[v.model]}"
+    im = rank_heatmap(ax, data, texts, [label for _, label in SCENARIOS], [dict(CRITERIA)[c] for c in keys])
     cb = bottom.colorbar(im, ax=ax, shrink=0.75, aspect=25, pad=0.01)
-    cb.set_label("Fraction of resamples ranked first")
+    cb.set_label("Largest fraction of resamples ranked first")
     cb.outline.set_visible(False)
     cb.ax.tick_params(width=0.4, length=2)
     letter(bottom, "b")
     save(fig, "comparison")
+
+
+def figure_rank_matrix(learned) -> None:
+    """Supplementary figure: every learned predictor's first-rank fraction in the primary comparison."""
+    rank = pd.read_csv(RESULTS / "rank_probabilities.csv")
+    keys = [c for c, _ in CRITERIA]
+    assert set(rank.criterion) == set(keys), sorted(set(rank.criterion) ^ set(keys))
+    pivot = rank.pivot(index="model", columns="criterion", values="P_rank_1").reindex(index=learned, columns=keys)
+    data = pivot.to_numpy()
+    texts = [[f"{v:.2f}" for v in row] for row in data]
+    fig, ax = plt.subplots(figsize=(WIDTH, 2.9), layout="constrained")
+    im = rank_heatmap(ax, data, texts, [NAMES[m] for m in pivot.index], [dict(CRITERIA)[c] for c in keys])
+    cb = fig.colorbar(im, ax=ax, shrink=0.75, aspect=25, pad=0.01)
+    cb.set_label("Fraction of resamples ranked first")
+    cb.outline.set_visible(False)
+    cb.ax.tick_params(width=0.4, length=2)
+    save(fig, "rank_matrix")
 
 
 def schematic(ax) -> None:
@@ -421,6 +469,7 @@ def main() -> None:
     figure_sensors(features)
     figure_accuracy(pred, learned, controls)
     figure_comparison(learned)
+    figure_rank_matrix(learned)
     figure_maintenance()
     supplementary(features, pred)
     print("Data figures written to", FIGURES)

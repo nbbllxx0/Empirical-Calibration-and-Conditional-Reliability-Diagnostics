@@ -16,18 +16,11 @@ from threadpoolctl import threadpool_limits
 
 from .learners import WeightedStumpBoosting, SubspaceRidge
 from .endpoint import CompetingStopModel, threshold_predictions
+from .roles import ROLE_OFFSETS, fold_roles
 
 
 LEARNED=("representation","random_forest","standard_boosting","custom_boosting","tcn","attention","subspace_ridge")
 CONTROLS=("time_only","elapsed_clock","degradation","context_only")
-
-
-def fold_roles(bearings,test):
-    k=bearings.index(test)
-    validation=bearings[(k+1)%len(bearings)]
-    calibration=bearings[(k+2)%len(bearings)]
-    train=[b for b in bearings if b not in (test,validation,calibration)]
-    return train,validation,calibration
 
 
 def input_matrices(frame,manifest,train):
@@ -74,7 +67,7 @@ def degradation_predictions(frame,train,idx):
     return np.asarray(result),{"threshold_g":8.0,"threshold_basis":"fixed midpoint of documented 6-10 g range; not test-specific fitted threshold","prior_log_growth_per_hour":prior,"context_coefficients":reg.coef_.tolist(),"context_intercept":float(reg.intercept_),"forecast_cap_hours":cap}
 
 
-def run(processed:Path,out:Path,protocol:Path,models:list[str],gpu_python:str="py",split="lobo",seed=20260929,epochs=120,test_bearings=None,jobs=1):
+def run(processed:Path,out:Path,protocol:Path,models:list[str],gpu_python:str="py",split="lobo",seed=20260929,epochs=120,test_bearings=None,jobs=1,roles="forward"):
     threadpool_limits(limits=1)
     cfg=json.loads(protocol.read_text(encoding="utf-8"))
     manifest=json.loads((processed/"manifest.json").read_text(encoding="utf-8"))
@@ -88,7 +81,7 @@ def run(processed:Path,out:Path,protocol:Path,models:list[str],gpu_python:str="p
     if not set(selected).issubset(bearings):
         raise ValueError("Unknown supervised test bearing")
     for test in selected:
-        train_b,val_b,cal_b=fold_roles(bearings,test)
+        train_b,val_b,cal_b=fold_roles(bearings,test,roles)
         groups={"train":np.flatnonzero(frame.bearing_id.isin(train_b)),"validation":np.flatnonzero(frame.bearing_id==val_b),
                 "calibration":np.flatnonzero(frame.bearing_id==cal_b),"test":np.flatnonzero(frame.bearing_id==test)}
         regime=None
@@ -105,6 +98,8 @@ def run(processed:Path,out:Path,protocol:Path,models:list[str],gpu_python:str="p
         splitmeta={"test":test,"training_bearings":train_b,"validation_bearing":val_b,"calibration_bearing":cal_b,
                    "split":split,"excluded_regime":regime,"role_counts":{k:len(v) for k,v in groups.items()},
                    "protocol_sha256":hashlib.sha256(protocol.read_bytes()).hexdigest(),"seed":seed}
+        if roles!="forward":
+            splitmeta["roles"]=roles
         if (fold/"split.json").exists():
             previous=json.loads((fold/"split.json").read_text(encoding="utf-8"))
             if previous != splitmeta:
@@ -231,6 +226,7 @@ if __name__=="__main__":
     p.add_argument("--epochs",type=int,default=120)
     p.add_argument("--test-bearings",nargs="+")
     p.add_argument("--jobs",type=int,default=1)
+    p.add_argument("--roles",choices=sorted(ROLE_OFFSETS),default="forward",help="Fold-role allocation; 'forward' is the primary design")
     p.add_argument("--gpu-python",default="py",help="Neural-worker interpreter; 'py' selects the Windows Python 3.12 launcher")
     a=p.parse_args()
-    run(a.processed,a.out,a.protocol,a.models,gpu_python=a.gpu_python,split=a.split,seed=a.seed,epochs=a.epochs,test_bearings=a.test_bearings,jobs=a.jobs)
+    run(a.processed,a.out,a.protocol,a.models,gpu_python=a.gpu_python,split=a.split,seed=a.seed,epochs=a.epochs,test_bearings=a.test_bearings,jobs=a.jobs,roles=a.roles)

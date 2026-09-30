@@ -58,6 +58,103 @@ def group(title, ncol):
     return r"\multicolumn{"+str(ncol)+r"}{@{}l}{\textit{"+title+r"}}\\"
 
 
+def sensitivity_macros(sens, s, policy):
+    """Macros for the registered secondary analyses (protocol_sensitivity_addendum.json)."""
+    top = pd.read_csv(sens/"rank_scenarios_top.csv")
+    paired = pd.read_csv(sens/"paired_differences.csv").set_index(["metric", "comparison"])
+    pop = pd.read_csv(sens/"population_controls_per_bearing.csv").groupby("control")[["nMAE", "late_MAE_hours"]].mean()
+    phase = pd.read_csv(sens/"phase_split_per_bearing.csv").groupby("model")[["early_error_over_life", "final40_error_over_life"]].mean()
+    horizon = pd.read_csv(sens/"horizon_support.csv")
+    gaps = pd.read_csv(sens/"calendar_gaps.csv").set_index("bearing_id")
+    first = pd.read_csv(sens/"lower_bound_first_record.csv").set_index("model")
+    roles = pd.read_csv(sens/"roles_model_summary.csv").set_index(["scenario", "model"])
+    roles_m = pd.read_csv(sens/"roles_maintenance_one_hour.csv").set_index(["scenario", "model", "policy"])
+    seeds = pd.read_csv(sens/"seed_model_summary.csv").set_index(["seed", "model"])
+    t = top.set_index(["scenario", "criterion"])
+    def best(scenario):
+        g = top[top.scenario == scenario]
+        return g.loc[g.first_rank_fraction.idxmax()]
+    deleted = top[top.scenario.str.startswith("endpoint_all8_without_")]
+    dmax = deleted.loc[deleted.first_rank_fraction.idxmax()]
+    # Facts the text states in words; the build stops if the evidence no longer supports them.
+    assert t.loc[("endpoint_common7", "MAE_hours")].model == "representation"
+    assert len(horizon[horizon.inputs == "endpoint_aware"]) == 0
+    vib_h = horizon[horizon.inputs == "vibration_only"]
+    assert len(vib_h) == 1 and vib_h.iloc[0].model == "representation" and vib_h.iloc[0].bearing_id == "B12", vib_h
+    assert dmax.scenario == "endpoint_all8_without_B11" and dmax.model == "attention", dmax
+    assert set(gaps.index[gaps.gaps_over_5_min_total_minutes > 0]) == {"B08", "B10"}
+    k = lambda key: paired.loc[key]
+    macros = {
+        "CommonHour": (t.loc[("endpoint_common7", "MAE_hours")].first_rank_fraction, ".2f"),
+        "CommonTop": (best("endpoint_common7").first_rank_fraction, ".2f"),
+        "VibCommonHorizon": (t.loc[("vibration_common7", "prognostic_horizon_fraction")].first_rank_fraction, ".2f"),
+        "HorizonSeconds": (vib_h.iloc[0].residual_seconds_at_start, ".0f"),
+        "HorizonRecords": (vib_h.iloc[0].sustained_records, "d"),
+        "DeleteTop": (dmax.first_rank_fraction, ".2f"),
+        "LateDiffClock": (k(("late_MAE_hours", "representation minus time_only"))["mean"], ".2f"),
+        "LateDiffClockLow": (k(("late_MAE_hours", "representation minus time_only")).CI_low, ".2f"),
+        "LateDiffClockHigh": (k(("late_MAE_hours", "representation minus time_only")).CI_high, ".2f"),
+        "LateWinsClock": (k(("late_MAE_hours", "representation minus time_only")).bearings_lower, "d"),
+        "LateGainClock": (-k(("late_MAE_hours", "representation minus time_only"))["mean"], ".1f"),
+        "LateDiffContext": (k(("late_MAE_hours", "representation minus context_only"))["mean"], ".2f"),
+        "LateDiffContextLow": (k(("late_MAE_hours", "representation minus context_only")).CI_low, ".2f"),
+        "LateDiffContextHigh": (k(("late_MAE_hours", "representation minus context_only")).CI_high, ".2f"),
+        "LateWinsContext": (k(("late_MAE_hours", "representation minus context_only")).bearings_lower, "d"),
+        "AttnDiff": (k(("nMAE", "representation minus attention"))["mean"], ".3f"),
+        "AttnDiffLow": (k(("nMAE", "representation minus attention")).CI_low, ".3f"),
+        "AttnDiffHigh": (k(("nMAE", "representation minus attention")).CI_high, ".3f"),
+        "AttnWins": (k(("nMAE", "representation minus attention")).bearings_lower, "d"),
+        "MrlError": (pop.loc["conditional mean residual life", "nMAE"], ".3f"),
+        "MrlLate": (pop.loc["conditional mean residual life", "late_MAE_hours"], ".2f"),
+        "MedrlError": (pop.loc["conditional median residual life", "nMAE"], ".3f"),
+        "MedrlLate": (pop.loc["conditional median residual life", "late_MAE_hours"], ".2f"),
+        "FinalLatent": (phase.loc["representation", "final40_error_over_life"], ".3f"),
+        "EarlyLatent": (phase.loc["representation", "early_error_over_life"], ".3f"),
+        "FinalClock": (phase.loc["time_only", "final40_error_over_life"], ".3f"),
+        "EarlyElapsed": (phase.loc["elapsed_clock", "early_error_over_life"], ".3f"),
+        "GapBeight": (gaps.loc["B08", "gaps_over_5_min_total_minutes"], ".0f"),
+        "GapBten": (gaps.loc["B10", "gaps_over_5_min_total_minutes"], ".0f"),
+        "LowerFirst": (first.loc["representation", "bearings_triggered_at_first_record"], "d"),
+        "AttnLowerUnused": (policy.loc[("attention", "lower_bound"), "unused_life_fraction"], ".3f"),
+        "AlwaysUnused": (policy.loc[("always_action", "control"), "unused_life_fraction"], ".3f"),
+        "LowerGain": (policy.loc[("always_action", "control"), "unused_life_fraction"]
+                      - policy.loc[("representation", "lower_bound"), "unused_life_fraction"], ".3f"),
+    }
+    for sc, tag in (("swap", "Swap"), ("reverse", "Reverse")):
+        macros.update({
+            tag+"Error": (roles.loc[(sc, "representation"), "nMAE"], ".3f"),
+            tag+"Count": (int(roles.loc[(sc, "representation"), "bearings_nMAE_le_0.20"]), "d"),
+            tag+"Late": (roles.loc[(sc, "representation"), "late_MAE_hours"], ".2f"),
+            tag+"ClockLate": (roles.loc[(sc, "time_only"), "late_MAE_hours"], ".2f"),
+            tag+"Coverage": (roles.loc[(sc, "representation"), "coverage"], ".3f"),
+            tag+"WorstCoverage": (roles.loc[(sc, "representation"), "worst_coverage"], ".3f"),
+            tag+"Top": (best("endpoint_all8_roles_"+sc).first_rank_fraction, ".2f"),
+            tag+"LowerUnused": (roles_m.loc[(sc, "representation", "lower_bound"), "unused_life_fraction"], ".3f"),
+            tag+"LowerLate": (roles_m.loc[(sc, "representation", "lower_bound"), "too_late"]*8, ".0f"),
+        })
+    for sc, tag in (("swap", "Swap"), ("reverse", "Reverse")):
+        macros[tag+"AttnError"] = (roles.loc[(sc, "attention"), "nMAE"], ".3f")
+    # Words in the text: attention is lower than the latent-state network only under the reversed roles.
+    assert roles.loc[("reverse", "attention"), "nMAE"] < roles.loc[("reverse", "representation"), "nMAE"]
+    assert roles.loc[("swap", "representation"), "nMAE"] < roles.loc[("swap", "attention"), "nMAE"]
+    for seed, tag in ((20260930, "SeedB"), (20260931, "SeedC")):
+        macros.update({tag+"Top": (best(f"endpoint_all8_seed_{seed}").first_rank_fraction, ".2f"),
+                       tag+"AttnError": (seeds.loc[(seed, "attention"), "nMAE"], ".3f")})
+    # Seed 20260930 meets target R (two different stable winners); the other seeds do not.
+    b_stable = top[(top.scenario == "endpoint_all8_seed_20260930") & (top.first_rank_fraction >= .7)]
+    c_stable = top[(top.scenario == "endpoint_all8_seed_20260931") & (top.first_rank_fraction >= .7)]
+    assert set(b_stable.model) == {"representation", "attention"}, b_stable
+    assert set(c_stable.model) == {"representation"}, c_stable
+    macros.update({"SeedBHour": (t.loc[("endpoint_all8_seed_20260930", "MAE_hours")].first_rank_fraction, ".2f"),
+                   "SeedBInterval": (t.loc[("endpoint_all8_seed_20260930", "interval_score_hours")].first_rank_fraction, ".2f"),
+                   "SeedCNorm": (t.loc[("endpoint_all8_seed_20260931", "nMAE")].first_rank_fraction, ".2f"),
+                   "SwapAccuracy": (t.loc[("endpoint_all8_roles_swap", "alpha_lambda_accuracy")].first_rank_fraction, ".2f")})
+    lowest = seeds.reset_index().loc[lambda d: d.groupby("seed").nMAE.idxmin()]
+    assert set(lowest.model) == {"representation"}, lowest
+    macros["PrimaryAttnError"] = (seeds.loc[(20260929, "attention"), "nMAE"], ".3f")
+    return macros
+
+
 def build():
     (PAPER/"tables").mkdir(parents=True, exist_ok=True)
     (PAPER/"figures").mkdir(exist_ok=True)
@@ -132,6 +229,15 @@ def build():
     assert best_other.model == "attention" and best_other.criterion == "interval_score_hours", best_other  # named in the text
     ci = b[(b.model == "representation")&(b.metric == "nMAE")].iloc[0]
     vals.update({"BestErrorLow": (ci.CI_low, ".3f"), "BestErrorHigh": (ci.CI_high, ".3f")})
+    vals.update(sensitivity_macros(r/"sensitivity", s, policy))
+    # Long tests: the three longest scored tests and their share of the scored hours (Table 6, Table 1).
+    life = rep.duration_hours.sort_values()
+    longest = list(life.index[-3:])
+    assert longest == ["B08", "B17", "B10"], longest
+    vals.update({"SlopeBeight": (rep.loc["B08", "slope"], ".2f"), "SlopeBten": (rep.loc["B10", "slope"], ".2f"),
+                 "SlopeBseventeen": (rep.loc["B17", "slope"], ".2f"),
+                 "LongHours": (life.iloc[-3:].sum(), ".0f"), "ScoredHours": (life.sum(), ".0f")})
+    vals = {k: ((int(round(v)) if f == "d" else v), f) for k, (v, f) in vals.items()}
     macros = ["\\newcommand{\\"+k+"}{"+format(v, f).replace("-", "$-$")+"}" for k, (v, f) in vals.items()]
     (PAPER/"numbers.tex").write_text("\n".join(macros)+"\n", encoding="utf-8")
     pd.DataFrame([{"macro": k, "data_value": v, "printed_value": format(v, f), "source": "aggregate CSV read in build_revision.py"}

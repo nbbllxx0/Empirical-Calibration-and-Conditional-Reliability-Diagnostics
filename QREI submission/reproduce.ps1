@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory=$true)][string]$AnalysisPython,
     [string]$NeuralPython = 'py',
-    [ValidateSet('prepare','fit','summarize','verify','paper')][string]$Stage = 'summarize'
+    [ValidateSet('prepare','fit','summarize','sensitivity','verify','paper')][string]$Stage = 'summarize'
 )
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
@@ -28,6 +28,11 @@ if ($Stage -eq 'summarize') {
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.summarize','--inputs','QREI submission/results/endpoint_tabular_groups','QREI submission/results/endpoint_neural','--out','QREI submission/results/endpoint_v3','--processed','data/processed/phme_tvoc_10b_endpoint_v3','--protocol','QREI submission/protocol_endpoint_v3.json')
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.compare')
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.seed_summary')
+}
+if ($Stage -eq 'sensitivity') {
+    # Registered secondary refits and diagnostics (protocol_sensitivity_addendum.json); run after 'summarize', before 'paper'.
+    Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.sensitivity_runs','--gpu-python',$NeuralPython)
+    Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.sensitivity')
 }
 if ($Stage -eq 'verify') {
     Invoke-Analysis -Arguments @('-u','-m','bearing_dt.qrei.verify')

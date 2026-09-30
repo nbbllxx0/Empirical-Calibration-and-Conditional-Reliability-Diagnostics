@@ -1,0 +1,8 @@
+metric,comparison,mean,CI_low,CI_high,bearings_lower
+late_MAE_hours,representation minus time_only,-2.623881284860115,-3.9532791187964884,-1.3019518152757725,7
+late_MAE_hours,representation minus elapsed_clock,-3.3030554171941486,-4.937987831132167,-1.7915807047777619,8
+late_MAE_hours,representation minus context_only,-2.6694302496610716,-4.298440431759072,-1.283413277881907,8
+late_MAE_hours,representation minus temperature_only,-3.783728206533427,-6.843896205838895,-1.316540957380159,8
+nMAE,representation minus attention,-0.02931727975038357,-0.13803586866541243,0.041490221941496756,3
+MAE_hours,representation minus attention,-0.3295417138677683,-1.272351776053037,0.2984131489006857,3
+late_MAE_hours,representation minus attention,-0.16130746936971072,-0.5637695533233241,0.22374846884576427,4

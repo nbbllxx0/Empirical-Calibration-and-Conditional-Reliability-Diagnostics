@@ -1,0 +1,15 @@
+model,bearings_triggered_at_first_record,unused_life_fraction,too_late
+attention,2,0.6561447302839782,0.0
+competing_stop,5,0.7403870244786137,0.0
+competing_threshold,6,0.825945023756459,0.0
+context_only,3,0.5447940933154394,0.25
+custom_boosting,3,0.5462548137846639,0.0
+degradation,7,0.781460820384569,0.0
+elapsed_clock,8,0.8278218433510462,0.0
+random_forest,2,0.6032316604142773,0.125
+representation,4,0.8039267777759153,0.0
+standard_boosting,3,0.5181166727096043,0.125
+subspace_ridge,3,0.6230716067991352,0.125
+tcn,3,0.6863236976588484,0.0
+temperature_only,4,0.6918806687197703,0.125
+time_only,2,0.5194500920872642,0.375
