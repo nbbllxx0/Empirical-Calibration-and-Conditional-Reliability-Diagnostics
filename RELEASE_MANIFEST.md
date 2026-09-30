@@ -50,3 +50,17 @@ paper_artifacts/
 ```
 
 These paths are deliberately ignored by Git.
+
+## Revised study (September 2026)
+
+Added in this update:
+
+- `bearing_dt/qrei/`: corrected physical-time pipeline (preparation, causal endpoint features, models, evaluation,
+  summaries, verification, table generation).
+- `tests/test_qrei_endpoint.py`, `tests/test_qrei_physical.py`.
+- `QREI submission/`: fixed protocols, aggregate results for both comparisons (forecast tables as `.csv.gz`),
+  evidence and verification records, figure scripts and SVG sources, and `reproduce.ps1`.
+- `data/processed/phme_tvoc_10b_endpoint_v3/`: `features.csv.gz` and `manifest.json` (derived from the public archive);
+  `data/processed/phme_tvoc_10b_v2/manifest.json`.
+
+Still excluded: raw archives, waveform arrays, per-fold forecast folders, trained weights, manuscript sources and PDFs.

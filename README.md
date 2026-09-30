@@ -7,6 +7,21 @@ operating-regime shift.
 Repository URL:
 <https://github.com/nbbllxx0/Empirical-Calibration-and-Conditional-Reliability-Diagnostics>
 
+## Revised study and correction (September 2026)
+
+**Correction.** The preprocessing used for the arXiv preprint (`bearing_dt/data/`) kept only the first 512 samples of
+each 1.6 s vibration record, standardized each window to unit variance and labeled spectral features with a nominal
+25.6 kHz sampling rate. The archive's true rates are 128 kHz (B01–B08) and 64 kHz (B10–B17). The preprint's
+sampling-rate statement is therefore incorrect, and its results depend on this preprocessing.
+
+**Revised study.** The corrected, physical-time analysis is in `bearing_dt/qrei/`, with its fixed protocols, aggregate
+results, verification records and figure scripts in [`QREI submission/`](QREI%20submission/README.md). It uses both
+channels over the full records in physical units, documented stopping criteria, forecasts in hours, and
+leave-one-bearing-out evaluation. It accompanies the manuscript *Evaluating Bearing Remaining Useful Life Forecasts
+for Maintenance under Temperature and Vibration Stopping Criteria* (in preparation). See `CHANGELOG.md`.
+
+The rest of this README documents the earlier release and its pipeline.
+
 ## Paper
 
 This repository accompanies the following preprint:
@@ -43,11 +58,13 @@ Run all commands from the repository root.
 
 ## Authors and Contact
 
-Authors: Shaoliang Yang, Jun Wang, and Yunsheng Wang.
-
 Institution: Department of Mechanical Engineering, Santa Clara University, Santa Clara, CA 95053, USA.
 
-Corresponding author: Jun Wang (`jwang22@scu.edu`).
+| Author | Email | ORCID | Website |
+|---|---|---|---|
+| Shaoliang Yang | `syang11@scu.edu` | [0000-0001-8802-5090](https://orcid.org/0000-0001-8802-5090) | <https://nbbllxx0.github.io/> |
+| Jun Wang (corresponding author) | `jwang22@scu.edu` | [0000-0001-8128-3580](https://orcid.org/0000-0001-8128-3580) | <https://sites.google.com/site/junwang2020umd/> |
+| Yunsheng Wang | `ywang54@scu.edu` | [0009-0009-9423-9453](https://orcid.org/0009-0009-9423-9453) | <https://ryanwang1203.github.io/> |
 
 ## What Is Implemented
 

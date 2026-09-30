@@ -1,0 +1,12 @@
+{
+  "counts_align": true,
+  "timestamps_align": true,
+  "all_sample_rates_checked": true,
+  "rms_standard_deviation_g": {
+    "A_rms_g": 1.2506202085153328,
+    "C_rms_g": 1.0209098043660758
+  },
+  "finite_predictors": true,
+  "amplitude_standardized_per_record": false,
+  "features_sha256": "a5b32e44dfb9ede57599d8eb0752442afdd508a6ee98d5ba71412da6b33162fb"
+}

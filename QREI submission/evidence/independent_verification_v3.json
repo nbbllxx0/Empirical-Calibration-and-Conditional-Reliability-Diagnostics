@@ -1,0 +1,166 @@
+{
+  "forecast_rows": 186872,
+  "models": 14,
+  "completed_bearings": 8,
+  "rows_per_model": 13348,
+  "timestamp_targets": [
+    {
+      "bearing": "B02",
+      "timestamp_target": "PASS",
+      "records": 1116
+    },
+    {
+      "bearing": "B03",
+      "timestamp_target": "PASS",
+      "records": 614
+    },
+    {
+      "bearing": "B04",
+      "timestamp_target": "PASS",
+      "records": 1114
+    },
+    {
+      "bearing": "B08",
+      "timestamp_target": "PASS",
+      "records": 1827
+    },
+    {
+      "bearing": "B10",
+      "timestamp_target": "PASS",
+      "records": 3224
+    },
+    {
+      "bearing": "B11",
+      "timestamp_target": "PASS",
+      "records": 1953
+    },
+    {
+      "bearing": "B12",
+      "timestamp_target": "PASS",
+      "records": 767
+    },
+    {
+      "bearing": "B17",
+      "timestamp_target": "PASS",
+      "records": 2733
+    }
+  ],
+  "split_checks": [
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group1\\B02",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group1\\B03",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group2\\B04",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group2\\B08",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group3\\B10",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group3\\B11",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group4\\B12",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_tabular_groups\\group4\\B17",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B02",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B03",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B04",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B08",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B10",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B11",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B12",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    },
+    {
+      "fold": "QREI submission\\results\\endpoint_neural\\B17",
+      "roles": "PASS",
+      "training_only_scale": "PASS"
+    }
+  ],
+  "persisted_models_reproduced": 56,
+  "max_absolute_hour_reproduction_error": 7.105427357601002e-15,
+  "raw_spot_checks": [
+    {
+      "bearing": "B02",
+      "channel": "A",
+      "raw_recomputed_rms_g": 0.15923463972540272,
+      "stored_rms_g": 0.1592346397254027,
+      "status": "PASS"
+    },
+    {
+      "bearing": "B02",
+      "channel": "C",
+      "raw_recomputed_rms_g": 0.12053339039963024,
+      "stored_rms_g": 0.1205333903996302,
+      "status": "PASS"
+    },
+    {
+      "bearing": "B10",
+      "channel": "A",
+      "raw_recomputed_rms_g": 0.16938098538471674,
+      "stored_rms_g": 0.1693809853847167,
+      "status": "PASS"
+    },
+    {
+      "bearing": "B10",
+      "channel": "C",
+      "raw_recomputed_rms_g": 0.10677439179310756,
+      "stored_rms_g": 0.1067743917931075,
+      "status": "PASS"
+    }
+  ],
+  "all_mean_nMAE_values_recomputed": true,
+  "future_test_lifetime_is_a_prediction_input": false,
+  "protocol_sha256": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9",
+  "interpretation": "Normalized scores use realized lifetime only after forecasting; all deployed forecasts use training-only scales."
+}

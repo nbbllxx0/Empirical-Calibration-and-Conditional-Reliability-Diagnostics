@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "bearing_id": "B01",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 377
+    },
+    {
+      "bearing_id": "B02",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 1116
+    },
+    {
+      "bearing_id": "B03",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 614
+    },
+    {
+      "bearing_id": "B04",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 1114
+    },
+    {
+      "bearing_id": "B05",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 572
+    },
+    {
+      "bearing_id": "B08",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 1827
+    },
+    {
+      "bearing_id": "B10",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 3224
+    },
+    {
+      "bearing_id": "B11",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 1953
+    },
+    {
+      "bearing_id": "B12",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 767
+    },
+    {
+      "bearing_id": "B17",
+      "timestamp_alignment": "PASS",
+      "prefix_invariance": "PASS",
+      "records": 2733
+    }
+  ],
+  "finite_predictors": true,
+  "added_features": [
+    "ep_temperature_max_C",
+    "ep_temperature_difference_C",
+    "ep_room_temperature_C",
+    "ep_temperature_rise_C",
+    "ep_temperature_ema_C",
+    "ep_thermal_margin_C",
+    "ep_temperature_running_max_C",
+    "ep_thermal_rate_15min_C_per_hour",
+    "ep_vibration_rate_15min_g_per_hour",
+    "ep_thermal_rate_30min_C_per_hour",
+    "ep_vibration_rate_30min_g_per_hour",
+    "ep_thermal_rate_60min_C_per_hour",
+    "ep_vibration_rate_60min_g_per_hour",
+    "ep_vibration_margin_6_g",
+    "ep_vibration_crossings_6",
+    "ep_vibration_margin_8_g",
+    "ep_vibration_crossings_8",
+    "ep_vibration_margin_10_g",
+    "ep_vibration_crossings_10"
+  ],
+  "test_stopping_cause_in_predictors": false,
+  "features_sha256": "0ac5cfd74a732acc71152cf79a89cad60dad5fa68943be7a8a8241b8a7ccad66",
+  "protocol_sha256": "117715dac0c75f5f126dd02920f6251e1309cac88cfaf902f47bdb1166c62ce9",
+  "original_processed_data_changed": false
+}

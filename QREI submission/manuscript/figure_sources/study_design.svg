@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="175.00mm" height="104.50mm" viewBox="0 0 700 418"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#44505b"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/><text x="0.0" y="14.0" font-family="Arial" font-size="15.12" font-weight="bold" fill="#1f2a36" text-anchor="start" >a</text>
+<text x="16.0" y="14.0" font-family="Arial" font-size="12.54" font-weight="normal" fill="#1f2a36" text-anchor="start" >Evaluation pipeline</text>
+<rect x="0.0" y="26.0" width="116.0" height="118.0" rx="5" fill="#eaf1f7" stroke="#2f5d8a" stroke-width="1.1"/>
+<path d="M0.0,50.0 L0.0,31.0 Q0.0,26.0 5.0,26.0 L111.0,26.0 Q116.0,26.0 116.0,31.0 L116.0,50.0 Z" fill="#2f5d8a"/>
+<circle cx="13.0" cy="38.0" r="8" fill="#ffffff"/>
+<text x="13.0" y="41.6" font-family="Arial" font-size="10.64" font-weight="bold" fill="#2f5d8a" text-anchor="middle" >1</text>
+<text x="69.0" y="41.8" font-family="Arial" font-size="11.42" font-weight="bold" fill="#ffffff" text-anchor="middle" >Test records</text>
+<text x="58.0" y="81.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >10 archived tests</text>
+<text x="58.0" y="95.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >14,297 acquisitions</text>
+<text x="58.0" y="110.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Load and speed</text>
+<text x="58.0" y="124.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >vary within tests</text>
+<path d="M119.0,85.0 L143.0,85.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="146.0" y="26.0" width="116.0" height="118.0" rx="5" fill="#fbefe6" stroke="#b65a24" stroke-width="1.1"/>
+<path d="M146.0,50.0 L146.0,31.0 Q146.0,26.0 151.0,26.0 L257.0,26.0 Q262.0,26.0 262.0,31.0 L262.0,50.0 Z" fill="#b65a24"/>
+<circle cx="159.0" cy="38.0" r="8" fill="#ffffff"/>
+<text x="159.0" y="41.6" font-family="Arial" font-size="10.64" font-weight="bold" fill="#b65a24" text-anchor="middle" >2</text>
+<text x="215.0" y="41.8" font-family="Arial" font-size="11.42" font-weight="bold" fill="#ffffff" text-anchor="middle" >Endpoint rules</text>
+<text x="204.0" y="81.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >6 vibration stops</text>
+<text x="204.0" y="95.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >2 temperature stops</text>
+<text x="204.0" y="110.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >B01, B05 kept as</text>
+<text x="204.0" y="124.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >diagnostic records</text>
+<path d="M265.0,85.0 L289.0,85.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="292.0" y="26.0" width="116.0" height="118.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<path d="M292.0,50.0 L292.0,31.0 Q292.0,26.0 297.0,26.0 L403.0,26.0 Q408.0,26.0 408.0,31.0 L408.0,50.0 Z" fill="#237a73"/>
+<circle cx="305.0" cy="38.0" r="8" fill="#ffffff"/>
+<text x="305.0" y="41.6" font-family="Arial" font-size="10.64" font-weight="bold" fill="#237a73" text-anchor="middle" >3</text>
+<text x="361.0" y="41.8" font-family="Arial" font-size="11.42" font-weight="bold" fill="#ffffff" text-anchor="middle" >Signal chain</text>
+<text x="350.0" y="81.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Channels A, C in g</text>
+<text x="350.0" y="95.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Common 64 kHz rate</text>
+<text x="350.0" y="110.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Envelope and orders</text>
+<text x="350.0" y="124.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Causal temperature</text>
+<path d="M411.0,85.0 L435.0,85.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="438.0" y="26.0" width="116.0" height="118.0" rx="5" fill="#efecf6" stroke="#5a4a8c" stroke-width="1.1"/>
+<path d="M438.0,50.0 L438.0,31.0 Q438.0,26.0 443.0,26.0 L549.0,26.0 Q554.0,26.0 554.0,31.0 L554.0,50.0 Z" fill="#5a4a8c"/>
+<circle cx="451.0" cy="38.0" r="8" fill="#ffffff"/>
+<text x="451.0" y="41.6" font-family="Arial" font-size="10.64" font-weight="bold" fill="#5a4a8c" text-anchor="middle" >4</text>
+<text x="507.0" y="41.8" font-family="Arial" font-size="11.42" font-weight="bold" fill="#ffffff" text-anchor="middle" >Forecasts</text>
+<text x="496.0" y="81.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >8 learned predictors</text>
+<text x="496.0" y="95.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >6 reference controls</text>
+<text x="496.0" y="110.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Output in hours</text>
+<text x="496.0" y="124.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >No test-life scaling</text>
+<path d="M557.0,85.0 L581.0,85.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="584.0" y="26.0" width="116.0" height="118.0" rx="5" fill="#e8edf3" stroke="#1f3b5a" stroke-width="1.1"/>
+<path d="M584.0,50.0 L584.0,31.0 Q584.0,26.0 589.0,26.0 L695.0,26.0 Q700.0,26.0 700.0,31.0 L700.0,50.0 Z" fill="#1f3b5a"/>
+<circle cx="597.0" cy="38.0" r="8" fill="#ffffff"/>
+<text x="597.0" y="41.6" font-family="Arial" font-size="10.64" font-weight="bold" fill="#1f3b5a" text-anchor="middle" >5</text>
+<text x="653.0" y="41.8" font-family="Arial" font-size="11.42" font-weight="bold" fill="#ffffff" text-anchor="middle" >Evaluation</text>
+<text x="642.0" y="81.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >8 held-out bearings</text>
+<text x="642.0" y="95.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Bearing bootstrap</text>
+<text x="642.0" y="110.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Error, direction,</text>
+<text x="642.0" y="124.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >intervals, lead time</text>
+<text x="0.0" y="190.0" font-family="Arial" font-size="15.12" font-weight="bold" fill="#1f2a36" text-anchor="start" >b</text>
+<text x="16.0" y="190.0" font-family="Arial" font-size="12.54" font-weight="normal" fill="#1f2a36" text-anchor="start" >Bearing roles in the eight leave-one-bearing-out folds</text>
+<text x="123.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B02</text>
+<text x="164.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B03</text>
+<text x="205.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B04</text>
+<text x="246.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B08</text>
+<text x="287.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B10</text>
+<text x="328.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B11</text>
+<text x="369.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B12</text>
+<text x="410.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="middle" >B17</text>
+<text x="465.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#55616c" text-anchor="middle" >B01</text>
+<text x="506.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#55616c" text-anchor="middle" >B05</text>
+<text x="485.5" y="203.0" font-family="Arial" font-size="10.30" font-weight="normal" fill="#55616c" text-anchor="middle" >Diagnostic</text>
+<text x="266.5" y="203.0" font-family="Arial" font-size="10.30" font-weight="normal" fill="#55616c" text-anchor="middle" >Documented completed tests</text>
+<text x="94.0" y="237.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 1</text>
+<rect x="104.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="145.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="186.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="227.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="268.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="309.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="350.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="391.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="446.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="224.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="237.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="259.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 2</text>
+<rect x="104.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="145.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="186.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="227.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="268.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="309.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="350.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="391.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="446.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="246.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="259.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="281.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 3</text>
+<rect x="104.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="145.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="186.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="227.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="268.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="309.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="350.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="391.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="446.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="268.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="281.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="303.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 4</text>
+<rect x="104.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="145.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="186.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="227.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="268.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="309.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="350.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="391.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="446.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="290.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="303.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="325.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 5</text>
+<rect x="104.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="145.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="186.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="227.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="268.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="309.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="350.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="391.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="446.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="312.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="325.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="347.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 6</text>
+<rect x="104.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="145.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="186.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="227.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="268.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="309.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="350.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="391.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="446.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="334.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="347.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="369.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 7</text>
+<rect x="104.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="145.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="186.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="227.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="268.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="309.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="350.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="391.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="446.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="356.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="369.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="94.0" y="391.0" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="end" >Fold 8</text>
+<rect x="104.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#6f9cc4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="123.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<rect x="145.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dd9a45" stroke="#ffffff" stroke-width="0.8"/>
+<text x="164.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<rect x="186.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="205.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="227.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="246.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="268.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="287.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="309.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="328.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="350.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#dfe7ef" stroke="#ffffff" stroke-width="0.8"/>
+<text x="369.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<rect x="391.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#1f3b5a" stroke="#ffffff" stroke-width="0.8"/>
+<text x="410.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<rect x="446.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="465.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<rect x="487.0" y="378.0" width="38.0" height="19.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="506.0" y="391.1" font-family="Arial" font-size="10.75" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="559.0" y="217.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Role in a fold</text>
+<rect x="559.0" y="224.0" width="22.0" height="17.0" rx="2.5" fill="#1f3b5a" stroke="#1f3b5a" stroke-width="0.8"/>
+<text x="570.0" y="236.3" font-family="Arial" font-size="10.53" font-weight="bold" fill="#ffffff" text-anchor="middle" >T</text>
+<text x="589.0" y="232.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Test</text>
+<text x="589.0" y="243.5" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="start" >one bearing, scored</text>
+<rect x="559.0" y="254.0" width="22.0" height="17.0" rx="2.5" fill="#6f9cc4" stroke="#6f9cc4" stroke-width="0.8"/>
+<text x="570.0" y="266.3" font-family="Arial" font-size="10.53" font-weight="bold" fill="#ffffff" text-anchor="middle" >V</text>
+<text x="589.0" y="262.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Validation</text>
+<text x="589.0" y="273.5" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="start" >selects training epoch</text>
+<rect x="559.0" y="284.0" width="22.0" height="17.0" rx="2.5" fill="#dd9a45" stroke="#dd9a45" stroke-width="0.8"/>
+<text x="570.0" y="296.3" font-family="Arial" font-size="10.53" font-weight="bold" fill="#ffffff" text-anchor="middle" >C</text>
+<text x="589.0" y="292.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Calibration</text>
+<text x="589.0" y="303.5" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="start" >sets interval width</text>
+<rect x="559.0" y="314.0" width="22.0" height="17.0" rx="2.5" fill="#dfe7ef" stroke="#dfe7ef" stroke-width="0.8"/>
+<text x="570.0" y="326.3" font-family="Arial" font-size="10.53" font-weight="bold" fill="#1f2a36" text-anchor="middle" >F</text>
+<text x="589.0" y="322.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Fitting</text>
+<text x="589.0" y="333.5" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="start" >five bearings</text>
+<rect x="559.0" y="344.0" width="22.0" height="17.0" rx="2.5" fill="#f4f5f6" stroke="#d4d9dd" stroke-width="0.8"/>
+<text x="570.0" y="356.3" font-family="Arial" font-size="10.53" font-weight="bold" fill="#9aa3aa" text-anchor="middle" >–</text>
+<text x="589.0" y="352.0" font-family="Arial" font-size="10.98" font-weight="bold" fill="#1f2a36" text-anchor="start" >Not used</text>
+<text x="589.0" y="363.5" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="start" >never fitted or scored</text>
+<text x="266.5" y="414.0" font-family="Arial" font-size="10.30" font-weight="normal" fill="#55616c" text-anchor="middle" >Validation and calibration bearings follow the test bearing in circular order.</text></svg>

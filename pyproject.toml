@@ -8,9 +8,9 @@ version = "0.1.0"
 description = "Calibration-aware benchmark suite for bearing RUL prediction."
 requires-python = ">=3.10"
 authors = [
-  { name = "Shaoliang Yang" },
+  { name = "Shaoliang Yang", email = "syang11@scu.edu" },
   { name = "Jun Wang", email = "jwang22@scu.edu" },
-  { name = "Yunsheng Wang" },
+  { name = "Yunsheng Wang", email = "ywang54@scu.edu" },
 ]
 dependencies = [
   "numpy",
@@ -23,6 +23,8 @@ dependencies = [
 dev = [
   "pytest==7.4.0",
 ]
+qrei = ["pandas>=2.3,<3", "scipy>=1.15,<2", "matplotlib>=3.10,<4", "pillow"]
+test = ["pytest>=8"]
 
 [tool.setuptools.packages.find]
 include = ["bearing_dt*"]

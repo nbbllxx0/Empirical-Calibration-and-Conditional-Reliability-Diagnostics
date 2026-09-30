@@ -1,0 +1,105 @@
+{
+  "G1_G3_coherent_models": [],
+  "G4": false,
+  "G4_stable_criterion_winners": [
+    {
+      "model": "representation",
+      "criterion": "MAE_hours",
+      "P_rank_1": 0.8172,
+      "higher_is_better": false
+    }
+  ],
+  "per_model_gates": [
+    {
+      "model": "attention",
+      "G1": false,
+      "G1_nMAE": 0.35921671723748677,
+      "G1_bearings": 2,
+      "G2": true,
+      "G2_late_MAE_hours": 1.35732633698315,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -1.1336815542446557
+    },
+    {
+      "model": "competing_stop",
+      "G1": false,
+      "G1_nMAE": 0.41242386281011467,
+      "G1_bearings": 3,
+      "G2": true,
+      "G2_late_MAE_hours": 1.7862519506185446,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": false,
+      "G3_median_slope": -0.6424534503826336
+    },
+    {
+      "model": "custom_boosting",
+      "G1": false,
+      "G1_nMAE": 0.5485485473653431,
+      "G1_bearings": 2,
+      "G2": true,
+      "G2_late_MAE_hours": 2.6211387298743127,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -0.7403653442348164
+    },
+    {
+      "model": "random_forest",
+      "G1": false,
+      "G1_nMAE": 0.44809515380328974,
+      "G1_bearings": 2,
+      "G2": true,
+      "G2_late_MAE_hours": 2.214218717941101,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -0.9350756524066267
+    },
+    {
+      "model": "representation",
+      "G1": false,
+      "G1_nMAE": 0.31553809806907623,
+      "G1_bearings": 3,
+      "G2": true,
+      "G2_late_MAE_hours": 1.1364108976826872,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -0.8400300242571038
+    },
+    {
+      "model": "standard_boosting",
+      "G1": false,
+      "G1_nMAE": 0.5454931683375825,
+      "G1_bearings": 2,
+      "G2": true,
+      "G2_late_MAE_hours": 2.690281155375175,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -0.7919383815442682
+    },
+    {
+      "model": "subspace_ridge",
+      "G1": false,
+      "G1_nMAE": 0.8887669413758543,
+      "G1_bearings": 2,
+      "G2": false,
+      "G2_late_MAE_hours": 4.943903306116964,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -0.7314664310469696
+    },
+    {
+      "model": "tcn",
+      "G1": false,
+      "G1_nMAE": 0.37311488699661066,
+      "G1_bearings": 1,
+      "G2": true,
+      "G2_late_MAE_hours": 1.4149796265608507,
+      "G2_time_only_hours": 3.8154174075328937,
+      "G3": true,
+      "G3_median_slope": -1.121776903538082
+    }
+  ],
+  "outcome": "STOP: physical prediction gate failed",
+  "thresholds_changed": false,
+  "claim": "Results are conditional on the fixed protocol and fitted models; they do not prove prediction is impossible."
+}

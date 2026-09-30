@@ -1,0 +1,12 @@
+model,nMAE_v2,nMAE_v3,delta_v3_minus_v2,CI_low,CI_high,improved_bearings,independent_bearings,inference
+attention,0.33979862400703165,0.35921671723748677,0.019418093230455118,-0.06143126516543279,0.09945632046001412,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+context_only,0.8554897547405612,0.8554897547405612,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+custom_boosting,0.5390000805622749,0.5485485473653431,0.009548466803068239,-0.05379135347531323,0.0874926156117665,5,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+degradation,4.73390404980538,4.73390404980538,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+elapsed_clock,0.5006064981484507,0.5006064981484507,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+random_forest,0.44119606895280716,0.44809515380328974,0.0068990848504825765,-0.020916275862417205,0.0366504501828529,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+representation,0.33271223985497395,0.31553809806907623,-0.01717414178589769,-0.07133086814843981,0.025038005429380807,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+standard_boosting,0.5408083787957136,0.5454931683375825,0.004684789541868923,-0.0655265683367829,0.07191034200433202,4,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+subspace_ridge,0.5520441574545967,0.8887669413758543,0.33672278392125765,-0.034056343051312686,0.8769491534590771,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+tcn,0.36843896996675873,0.3731148869966106,0.004675917029851845,-0.09758120935115389,0.09447742564710725,3,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results
+time_only,0.8221354367585161,0.8221354367585161,0.0,0.0,0.0,0,8,descriptive paired bootstrap conditional on the fits; follow-up prompted by v2 results

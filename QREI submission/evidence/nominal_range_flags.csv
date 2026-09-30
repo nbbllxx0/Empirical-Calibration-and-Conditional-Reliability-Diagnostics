@@ -1,0 +1,11 @@
+bearing_id,channel_A_above_nominal_50_g,channel_C_above_nominal_50_g,max_A_nominal_g,max_C_nominal_g,interpretation
+B01,10,1,92.4683931682991,53.74831264847377,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B02,0,0,37.316824110687136,18.545992617003137,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B03,0,0,34.13431246432363,14.595485483903506,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B04,0,0,46.33584269275654,25.03060958630635,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B05,0,0,33.981184989081186,16.485240875505276,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B08,1,0,58.55359821982032,27.13511148932819,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B10,0,0,43.20072004137451,22.13276306826836,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B11,0,0,28.81024607076172,44.25181435798321,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B12,0,0,21.36152788090869,37.01078133888438,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"
+B17,0,2,35.018187985336425,59.75768757400663,"DC-removed, harmonized nominal-unit peak flag; neither raw sensor clipping nor calibrated overrange established"

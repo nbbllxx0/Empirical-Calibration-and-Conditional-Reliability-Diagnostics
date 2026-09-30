@@ -1,0 +1,9 @@
+test_bearing,training_bearings,thermal_fitting_bearings,vibration_fitting_bearings,test_cause_is_only_a_retrospective_stratum
+B02,"B08,B10,B11,B12,B17",1,4,True
+B03,"B02,B10,B11,B12,B17",0,5,True
+B04,"B02,B03,B11,B12,B17",1,4,True
+B08,"B02,B03,B04,B12,B17",1,4,True
+B10,"B02,B03,B04,B08,B17",2,3,True
+B11,"B02,B03,B04,B08,B10",2,3,True
+B12,"B03,B04,B08,B10,B11",2,3,True
+B17,"B04,B08,B10,B11,B12",1,4,True

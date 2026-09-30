@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="175.00mm" height="58.00mm" viewBox="0 0 700 232"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#44505b"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/><rect x="0.0" y="0.0" width="156.0" height="72.0" rx="5" fill="#eaf1f7" stroke="#2f5d8a" stroke-width="1.1"/>
+<path d="M0.0,24.0 L0.0,5.0 Q0.0,0.0 5.0,0.0 L151.0,0.0 Q156.0,0.0 156.0,5.0 L156.0,24.0 Z" fill="#2f5d8a"/>
+<text x="78.0" y="15.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Waveform encoder</text>
+<text x="78.0" y="40.1" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Input 2 × 2,048</text>
+<text x="78.0" y="54.1" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Conv 32→48→96 channels</text>
+<text x="78.0" y="68.1" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Kernels 9, 7, 5; pooling</text>
+<path d="M156.0,43.0 L183.0,43.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="0.0" y="80.0" width="156.0" height="72.0" rx="5" fill="#eaf1f7" stroke="#2f5d8a" stroke-width="1.1"/>
+<path d="M0.0,104.0 L0.0,85.0 Q0.0,80.0 5.0,80.0 L151.0,80.0 Q156.0,80.0 156.0,85.0 L156.0,104.0 Z" fill="#2f5d8a"/>
+<text x="78.0" y="95.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Feature encoder</text>
+<text x="78.0" y="126.9" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Input 104 values</text>
+<text x="78.0" y="141.4" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Linear 104→96</text>
+<path d="M156.0,123.0 L183.0,123.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="0.0" y="160.0" width="156.0" height="72.0" rx="5" fill="#eaf1f7" stroke="#2f5d8a" stroke-width="1.1"/>
+<path d="M0.0,184.0 L0.0,165.0 Q0.0,160.0 5.0,160.0 L151.0,160.0 Q156.0,160.0 156.0,165.0 L156.0,184.0 Z" fill="#2f5d8a"/>
+<text x="78.0" y="175.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Context encoder</text>
+<text x="78.0" y="206.9" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Input 3 values</text>
+<text x="78.0" y="221.4" font-family="Arial" font-size="10.53" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Linear 3→48→96</text>
+<path d="M156.0,203.0 L183.0,203.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="186.0" y="0.0" width="28.0" height="232.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<text x="200.0" y="116" font-family="Arial" font-size="11.20" font-weight="bold" fill="#237a73" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 200.0 116)">Concatenate, 3 × 96 = 288</text>
+<rect x="244.0" y="78.0" width="100.0" height="76.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<path d="M244.0,102.0 L244.0,83.0 Q244.0,78.0 249.0,78.0 L339.0,78.0 Q344.0,78.0 344.0,83.0 L344.0,102.0 Z" fill="#237a73"/>
+<text x="294.0" y="93.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Fusion</text>
+<text x="294.0" y="126.9" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="middle" >288→96→96</text>
+<text x="294.0" y="141.4" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Dropout 0.1</text>
+<path d="M214.0,116.0 L241.0,116.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="392.0" y="30.0" width="100.0" height="62.0" rx="5" fill="#efecf6" stroke="#5a4a8c" stroke-width="1.1"/>
+<path d="M392.0,54.0 L392.0,35.0 Q392.0,30.0 397.0,30.0 L487.0,30.0 Q492.0,30.0 492.0,35.0 L492.0,54.0 Z" fill="#5a4a8c"/>
+<text x="442.0" y="45.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >State head</text>
+<text x="442.0" y="79.2" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Sigmoid → d</text>
+<rect x="392.0" y="140.0" width="100.0" height="62.0" rx="5" fill="#efecf6" stroke="#5a4a8c" stroke-width="1.1"/>
+<path d="M392.0,164.0 L392.0,145.0 Q392.0,140.0 397.0,140.0 L487.0,140.0 Q492.0,140.0 492.0,145.0 L492.0,164.0 Z" fill="#5a4a8c"/>
+<text x="442.0" y="155.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Rate head</text>
+<text x="442.0" y="189.2" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Softplus → r</text>
+<path d="M344.0,116.0 L360.0,116.0 L360.0,67.0 L389.0,67.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M360.0,116.0 L360.0,177.0 L389.0,177.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="540.0" y="60.0" width="160.0" height="112.0" rx="5" fill="#e8edf3" stroke="#1f3b5a" stroke-width="1.1"/>
+<path d="M540.0,84.0 L540.0,65.0 Q540.0,60.0 545.0,60.0 L695.0,60.0 Q700.0,60.0 700.0,65.0 L700.0,84.0 Z" fill="#1f3b5a"/>
+<text x="620.0" y="75.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Forecast in hours</text>
+<text x="620.0" y="112.4" font-family="Arial" font-size="10.08" font-weight="normal" fill="#1f2a36" text-anchor="middle" >ŷ = min{s(1 − d)/(r + 10⁻⁴), C}</text>
+<text x="620.0" y="126.9" font-family="Arial" font-size="10.08" font-weight="normal" fill="#1f2a36" text-anchor="middle" ></text>
+<text x="620.0" y="141.4" font-family="Arial" font-size="10.08" font-weight="normal" fill="#1f2a36" text-anchor="middle" >s: median fitting life</text>
+<text x="620.0" y="155.9" font-family="Arial" font-size="10.08" font-weight="normal" fill="#1f2a36" text-anchor="middle" >C: twice the longest life</text>
+<path d="M492.0,67.0 L508.0,67.0 L508.0,104.0 L537.0,104.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M492.0,177.0 L508.0,177.0 L508.0,140.0 L537.0,140.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/></svg>

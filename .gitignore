@@ -11,7 +11,14 @@ dist/
 
 # External data and generated experiment outputs.
 data/raw/
-data/processed/
+data/processed/*
+!data/processed/phme_tvoc_10b_endpoint_v3/
+data/processed/phme_tvoc_10b_endpoint_v3/*
+!data/processed/phme_tvoc_10b_endpoint_v3/manifest.json
+!data/processed/phme_tvoc_10b_endpoint_v3/features.csv.gz
+!data/processed/phme_tvoc_10b_v2/
+data/processed/phme_tvoc_10b_v2/*
+!data/processed/phme_tvoc_10b_v2/manifest.json
 runs/
 paper_artifacts/
 
@@ -23,5 +30,8 @@ scratch/
 
 # Manuscript PDFs, submission sources, and local audit materials are outside
 # the public code release.
-manuscript/
+/manuscript/
+/QREI submission/manuscript/*
+!/QREI submission/manuscript/figure_sources/
+/QREI submission/results/*/figures/
 *.pdf

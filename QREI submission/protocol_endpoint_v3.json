@@ -1,0 +1,130 @@
+{
+  "frozen_date": "2026-09-29 America/Los_Angeles",
+  "target_journal": "Quality and Reliability Engineering International",
+  "raw_bearings": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "B08",
+    "B10",
+    "B11",
+    "B12",
+    "B17"
+  ],
+  "event_bearings": [
+    "B02",
+    "B03",
+    "B04",
+    "B08",
+    "B10",
+    "B11",
+    "B12",
+    "B17"
+  ],
+  "diagnostic_only": {
+    "B01": "Endpoint uncertain: no preset criterion and conflicting log/telemetry",
+    "B05": "Deliberately interrupted; log dates inconsistent with telemetry"
+  },
+  "channels": [
+    "accHorizRear_A",
+    "accHorizFrontal_C"
+  ],
+  "conversion_g_per_V": 10.0,
+  "analysis_fs_Hz": 64000,
+  "waveform_fs_Hz": 1280,
+  "envelope_band_Hz": [
+    6000,
+    10000
+  ],
+  "fixed_power_bands_Hz": [
+    [
+      0.5,
+      200
+    ],
+    [
+      200,
+      1000
+    ],
+    [
+      1000,
+      3000
+    ],
+    [
+      3000,
+      6000
+    ],
+    [
+      6000,
+      10000
+    ]
+  ],
+  "contact_angle_degrees": 0,
+  "temperature_in_primary_predictors": true,
+  "target": "Hours to final acquisition of a documented completed test; measured timestamps, including interruptions",
+  "target_scale": "Median completed training-bearing duration in hours, fixed per fold",
+  "primary_split": "Eight leave-one-bearing-out folds; next bearing in sorted circular order for validation, following bearing for calibration; remaining five for fitting",
+  "training_weighting": "Equal bearing contribution; stratified per-bearing sampling for neural models",
+  "primary_metric_weighting": "Equal bearing contribution; window pooling secondary",
+  "alpha": 0.1,
+  "calibration": "90th percentile absolute residual on separate calibration bearing; descriptive empirical intervals with no asset-level coverage guarantee",
+  "regime_bands": {
+    "load_N": [
+      3500,
+      4250
+    ],
+    "speed_rpm": [
+      1800,
+      2500
+    ]
+  },
+  "neural_epochs_max": 120,
+  "neural_patience": 18,
+  "neural_batch_size": 128,
+  "neural_hidden": 96,
+  "seeds": [
+    20260929,
+    20260930,
+    20260931
+  ],
+  "bootstrap_draws": 10000,
+  "gate": {
+    "G1_mean_nMAE_max": 0.15,
+    "G1_bearings_nMAE_max": 0.2,
+    "G1_min_bearings": 6,
+    "G2": "Same model late-life absolute-hour MAE below time-only baseline",
+    "G3_median_slope_max": -0.7,
+    "G4_min_rank_probability": 0.7
+  },
+  "gate_interpretation": "G1-G3 must be met by at least one coherent learned predictor; G4 decides ranking-reversal versus ranking-instability framing. Thresholds unchanged from handoff. Normalized metrics and slopes are retrospective evaluation only.",
+  "selection": "Frozen families/settings, epochs selected only by independent validation bearing. No target-bearing selection or future-history predictors.",
+  "maintenance_policy": "First trigger when predicted remaining hours or lower bound is below 0.5, 1, or 2 h; one decision per bearing; failure cost ratio 5, 10, 20; always/never/age controls",
+  "claim_boundary": "Ten available test-rig records; eight completed tests for prediction; seven multipart records excluded; no field-machine, universal zero-shot, or population coverage claim",
+  "version": "endpoint-aware follow-up v3",
+  "registered_after": "Initial corrected v2 trial and failed gate; expressly authorized by author before follow-up results",
+  "initial_protocol_sha256": "d67169a8eaebcbad74c02c8c3f61b1ec4a207274ddc0e22e779525a259998e3b",
+  "learned_models": [
+    "representation",
+    "random_forest",
+    "standard_boosting",
+    "custom_boosting",
+    "tcn",
+    "attention",
+    "subspace_ridge",
+    "competing_stop"
+  ],
+  "controls": [
+    "time_only",
+    "elapsed_clock",
+    "degradation",
+    "context_only",
+    "temperature_only",
+    "competing_threshold"
+  ],
+  "added_predictors": "Current acquisition means T1,T2,ambient; max/difference/rise, causal 5-min EMA and running maximum; thermal 110 C margin, causal 15/30/60-min slopes; common vibration 6/8/10 g margins and prefix crossing counts. No held-out stopping-cause or per-test vibration-threshold input.",
+  "competing_stop": "Two cause-specific Weibull residual-time landmark hazards with fixed shape 2; logged training stop cause event density, other cause survival, mean first-event time; coefficient penalty .1, intercept penalty .02 around log(2 median training lifetime); B01/B05 not fitted as censored events; only five independent fitting bearings per fold, missing-cause folds explicitly disclosed.",
+  "competing_threshold": "Minimum thermal and vibration threshold-extrapolation control; thermal 110 C, vibration 8 g documented range midpoint, trailing .5 h slopes with .75 local/.25 positive source-median rate; first .1 h uses training-life clock; no threshold tuned to held-out data.",
+  "additional_analyses": "Paired same-bearing v2/v3 error differences; stratify results by realized stopping type only after forecasts; temperature-only control; no extra data; no gate threshold change or selection of winning test seed.",
+  "follow_up_limit": "One fixed endpoint-aware study. If unchanged G1-G3 fails, report failed follow-up and supply a bounded diagnostic revision draft, not a claim of reliable prognosis or submission readiness."
+}

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="175.00mm" height="101.50mm" viewBox="0 0 700 406"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#44505b"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/><text x="64.0" y="12.0" font-family="Arial" font-size="10.53" font-weight="bold" fill="#55616c" text-anchor="middle" >Raw records</text>
+<text x="226.0" y="12.0" font-family="Arial" font-size="10.53" font-weight="bold" fill="#55616c" text-anchor="middle" >Conditioning</text>
+<text x="409.0" y="12.0" font-family="Arial" font-size="10.53" font-weight="bold" fill="#55616c" text-anchor="middle" >Features</text>
+<text x="612.0" y="12.0" font-family="Arial" font-size="10.53" font-weight="bold" fill="#55616c" text-anchor="middle" >Model inputs</text>
+<rect x="324.0" y="22.0" width="170.0" height="54.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<path d="M324.0,44.0 L324.0,27.0 Q324.0,22.0 329.0,22.0 L489.0,22.0 Q494.0,22.0 494.0,27.0 L494.0,44.0 Z" fill="#237a73"/>
+<text x="409.0" y="36.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Waveform branch</text>
+<text x="409.0" y="66.2" font-family="Arial" font-size="10.98" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Anti-alias to 1,280 Hz</text>
+<rect x="0.0" y="90.0" width="128.0" height="96.0" rx="5" fill="#eaf1f7" stroke="#2f5d8a" stroke-width="1.1"/>
+<path d="M0.0,114.0 L0.0,95.0 Q0.0,90.0 5.0,90.0 L123.0,90.0 Q128.0,90.0 128.0,95.0 L128.0,114.0 Z" fill="#2f5d8a"/>
+<text x="64.0" y="105.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Vibration</text>
+<text x="64.0" y="141.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Channels A and C</text>
+<text x="64.0" y="156.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >1.6 s every ~12 s</text>
+<text x="64.0" y="170.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >128 or 64 kHz, volts</text>
+<rect x="158.0" y="90.0" width="136.0" height="96.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<path d="M158.0,114.0 L158.0,95.0 Q158.0,90.0 163.0,90.0 L289.0,90.0 Q294.0,90.0 294.0,95.0 L294.0,114.0 Z" fill="#237a73"/>
+<text x="226.0" y="105.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Conditioning</text>
+<text x="226.0" y="141.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Convert at 10 g/V</text>
+<text x="226.0" y="156.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Remove channel mean</text>
+<text x="226.0" y="170.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Resample to 64 kHz</text>
+<rect x="324.0" y="90.0" width="170.0" height="96.0" rx="5" fill="#e6f3f1" stroke="#237a73" stroke-width="1.1"/>
+<path d="M324.0,114.0 L324.0,95.0 Q324.0,90.0 329.0,90.0 L489.0,90.0 Q494.0,90.0 494.0,95.0 L494.0,114.0 Z" fill="#237a73"/>
+<text x="409.0" y="105.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Record descriptors</text>
+<text x="409.0" y="134.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Time-domain statistics</text>
+<text x="409.0" y="148.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Power in five bands</text>
+<text x="409.0" y="163.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >6–10 kHz envelope</text>
+<text x="409.0" y="177.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Power at defect orders</text>
+<rect x="0.0" y="240.0" width="128.0" height="72.0" rx="5" fill="#fbefe6" stroke="#b65a24" stroke-width="1.1"/>
+<path d="M0.0,264.0 L0.0,245.0 Q0.0,240.0 5.0,240.0 L123.0,240.0 Q128.0,240.0 128.0,245.0 L128.0,264.0 Z" fill="#b65a24"/>
+<text x="64.0" y="255.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Temperature</text>
+<text x="64.0" y="286.9" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Positions T1 and T2</text>
+<text x="64.0" y="301.4" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Ambient</text>
+<rect x="324.0" y="218.0" width="170.0" height="112.0" rx="5" fill="#fbefe6" stroke="#b65a24" stroke-width="1.1"/>
+<path d="M324.0,242.0 L324.0,223.0 Q324.0,218.0 329.0,218.0 L489.0,218.0 Q494.0,218.0 494.0,223.0 L494.0,242.0 Z" fill="#b65a24"/>
+<text x="409.0" y="233.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Causal histories</text>
+<text x="409.0" y="263.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Averages, 5 min half-life</text>
+<text x="409.0" y="277.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Slopes, 15–60 min</text>
+<text x="409.0" y="292.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Margins to 110 °C, 6–10 g</text>
+<text x="409.0" y="306.7" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Threshold crossings</text>
+<text x="409.0" y="321.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Elapsed time</text>
+<rect x="0.0" y="348.0" width="128.0" height="56.0" rx="5" fill="#f2f4f5" stroke="#6b7780" stroke-width="1.1"/>
+<path d="M0.0,370.0 L0.0,353.0 Q0.0,348.0 5.0,348.0 L123.0,348.0 Q128.0,348.0 128.0,353.0 L128.0,370.0 Z" fill="#6b7780"/>
+<text x="64.0" y="362.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Operating record</text>
+<text x="64.0" y="393.2" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Load and speed</text>
+<rect x="524.0" y="22.0" width="176.0" height="54.0" rx="5" fill="#e8edf3" stroke="#1f3b5a" stroke-width="1.1"/>
+<path d="M524.0,44.0 L524.0,27.0 Q524.0,22.0 529.0,22.0 L695.0,22.0 Q700.0,22.0 700.0,27.0 L700.0,44.0 Z" fill="#1f3b5a"/>
+<text x="612.0" y="36.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Waveforms</text>
+<text x="612.0" y="66.2" font-family="Arial" font-size="10.30" font-weight="normal" fill="#1f2a36" text-anchor="middle" >2 × 2,048 samples; neural only</text>
+<rect x="524.0" y="90.0" width="176.0" height="240.0" rx="5" fill="#e8edf3" stroke="#1f3b5a" stroke-width="1.1"/>
+<path d="M524.0,114.0 L524.0,95.0 Q524.0,90.0 529.0,90.0 L695.0,90.0 Q700.0,90.0 700.0,95.0 L700.0,114.0 Z" fill="#1f3b5a"/>
+<text x="612.0" y="105.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Engineered vector (104)</text>
+<text x="560.0" y="144.0" font-family="Arial" font-size="11.20" font-weight="bold" fill="#1f2a36" text-anchor="end" >42</text>
+<text x="568.0" y="144.0" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="start" >current descriptors</text>
+<text x="560.0" y="180.0" font-family="Arial" font-size="11.20" font-weight="bold" fill="#1f2a36" text-anchor="end" >40</text>
+<text x="568.0" y="180.0" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="start" >smoothed descriptors</text>
+<text x="560.0" y="216.0" font-family="Arial" font-size="11.20" font-weight="bold" fill="#1f2a36" text-anchor="end" >2</text>
+<text x="568.0" y="216.0" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="start" >vibration indicators</text>
+<text x="560.0" y="252.0" font-family="Arial" font-size="11.20" font-weight="bold" fill="#1f2a36" text-anchor="end" >19</text>
+<text x="568.0" y="252.0" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="start" >endpoint histories</text>
+<text x="560.0" y="288.0" font-family="Arial" font-size="11.20" font-weight="bold" fill="#1f2a36" text-anchor="end" >1</text>
+<text x="568.0" y="288.0" font-family="Arial" font-size="10.75" font-weight="normal" fill="#1f2a36" text-anchor="start" >elapsed time</text>
+<line x1="536" y1="304" x2="688" y2="304" stroke="#b9c5d1" stroke-width="0.8"/>
+<text x="612.0" y="320.0" font-family="Arial" font-size="10.08" font-weight="normal" fill="#55616c" text-anchor="middle" >all learned predictors</text>
+<rect x="524.0" y="348.0" width="176.0" height="56.0" rx="5" fill="#e8edf3" stroke="#1f3b5a" stroke-width="1.1"/>
+<path d="M524.0,370.0 L524.0,353.0 Q524.0,348.0 529.0,348.0 L695.0,348.0 Q700.0,348.0 700.0,353.0 L700.0,370.0 Z" fill="#1f3b5a"/>
+<text x="612.0" y="362.8" font-family="Arial" font-size="12.10" font-weight="bold" fill="#ffffff" text-anchor="middle" >Operating context (3)</text>
+<text x="612.0" y="393.2" font-family="Arial" font-size="10.30" font-weight="normal" fill="#1f2a36" text-anchor="middle" >Static and dynamic load, speed</text>
+<path d="M128.0,144.0 L155.0,144.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M294.0,144.0 L321.0,144.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M226.0,90.0 L226.0,54.0 L321.0,54.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M409.0,186.0 L409.0,215.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M128.0,276.0 L321.0,276.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M494.0,54.0 L521.0,54.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M494.0,144.0 L521.0,144.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M494.0,276.0 L521.0,276.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<path d="M128.0,383.0 L521.0,383.0" fill="none" stroke="#44505b" stroke-width="1.1" marker-end="url(#arrow)" stroke-linejoin="round"/></svg>
